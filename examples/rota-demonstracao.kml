@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  EXCLUSIVAMENTE DEMONSTRAÇÃO: coordenadas sintéticas na região de São Paulo.
+  Esta linha não é uma rota viária homologada, nem instrução de navegação.
+  Não foi validada contra ruas, sentidos de circulação ou condições de tráfego.
+  A altitude zero é ilustrativa e não participa da distância geodésica 2D.
+-->
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Vértice · exemplo de importação</name>
+    <description>Traçado sintético para verificar importação, ordem das coordenadas e prévia. Não utilizar como rota operacional.</description>
+    <Placemark>
+      <name>Demonstração · Santo Amaro a Berrini</name>
+      <description>Linha contínua sintética com 16 pontos. A sequência representa somente uma geometria de teste, sem homologação viária.</description>
+      <LineString>
+        <tessellate>1</tessellate>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>
+          -46.709100,-23.651400,0
+          -46.709800,-23.648600,0
+          -46.710200,-23.645300,0
+          -46.709600,-23.641900,0
+          -46.708400,-23.638500,0
+          -46.707000,-23.635200,0
+          -46.706400,-23.631700,0
+          -46.705100,-23.628200,0
+          -46.702700,-23.625100,0
+          -46.698900,-23.622500,0
+          -46.697100,-23.619200,0
+          -46.696700,-23.615800,0
+          -46.697000,-23.612500,0
+          -46.696300,-23.609200,0
+          -46.694800,-23.605600,0
+          -46.693600,-23.601800,0
+        </coordinates>
+      </LineString>
+    </Placemark>
+  </Document>
+</kml>

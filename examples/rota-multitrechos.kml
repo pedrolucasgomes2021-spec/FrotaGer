@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  EXCLUSIVAMENTE DEMONSTRAÇÃO: duas linhas independentes e sintéticas em São Paulo.
+  Nenhuma linha é uma rota viária homologada ou instrução de navegação.
+  Não existe conexão planejada entre A e B. O importador deve oferecer dois
+  candidatos separados; não deve criar uma linha ligando o fim de A ao início de B.
+-->
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Vértice · seleção de traçados independentes</name>
+    <description>Fixture de teste com duas opções. Selecione apenas o traçado que deseja importar.</description>
+    <Placemark>
+      <name>Demonstração A · região de Pinheiros</name>
+      <description>Trecho sintético A, independente do trecho B. Sem homologação viária.</description>
+      <LineString>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>
+          -46.703000,-23.568000
+          -46.701200,-23.566500
+          -46.699000,-23.565900
+          -46.697000,-23.566200
+          -46.694900,-23.566600
+          -46.693800,-23.566800
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Demonstração B · região da Paulista</name>
+      <description>Trecho sintético B, independente do trecho A. Sem homologação viária.</description>
+      <LineString>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>
+          -46.662000,-23.564000
+          -46.660600,-23.563300
+          -46.659000,-23.562600
+          -46.657400,-23.562000
+          -46.655900,-23.561400
+          -46.654300,-23.560700
+        </coordinates>
+      </LineString>
+    </Placemark>
+  </Document>
+</kml>

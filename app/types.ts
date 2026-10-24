@@ -1,0 +1,21 @@
+export type Role = 'admin' | 'driver' | 'passenger';
+export type Stop = {id:string;name:string;lat:number;lng:number;time:string};
+export type Route = {id:string;code:string;name:string;origin:string;destination:string;departure:string;returnTime:string;distance:number;duration:number;company:string;color:string;stops:Stop[];active:boolean;geometry?:[number,number][];geometrySource?:'kml'|'gpx'|'geojson'|'stops';geometryName?:string;gpsToleranceMeters?:number;revision?:number};
+export type Vehicle = {id:string;plate:string;model:string;capacity:number;year:number;status:'available'|'maintenance';createdAt?:string};
+export type Driver = {id:string;name:string;phone:string;license:string;registration?:string;active?:boolean;createdAt?:string};
+export type Passenger = {id:string;name:string;email:string;registration:string;company:string;routeId:string;stopId:string;destinationStopId?:string;active:boolean;createdAt?:string};
+export type Trip = {id:string;routeId:string;driverId:string;vehicleId:string;date:string;departure:string;status:'scheduled'|'in_progress'|'completed';startedAt?:string;endedAt?:string;startOdometerKm?:number;endOdometerKm?:number;routeSnapshot?:Route;driverSnapshot?:Driver;vehicleSnapshot?:Vehicle;legacySnapshot?:boolean};
+export type Booking = {id:string;tripId:string;passengerId:string;status:'confirmed'|'cancelled'|'boarded';createdAt:string;destinationStopId?:string};
+export type TripEvent = {id:string;tripId:string;passengerId?:string;kind:'boarding'|'alighting'|'incident'|'trip_start'|'trip_finish';at:string;lat?:number;lng?:number;accuracy?:number;source:'qr'|'manual'|'system'|'driver_batch';note?:string;stopId?:string;batchId?:string;verification?:'gps_at_stop'|'manual_override';passengerRegistration?:string;passengerName?:string;driverRegistration?:string;driverId?:string};
+export type Location = {id:string;tripId:string;lat:number;lng:number;accuracy:number;speed:number|null;heading:number|null;at:string;deviceAt?:string;simulated?:boolean;offRouteMeters?:number;offRoute?:boolean;quality?:'valid'|'poor_accuracy'|'jump'};
+export type ReportFilters={from:string;to:string;routeId:string;company:string;driverId:string;vehicleId:string;status:string;source:string};
+export type MetricKey='plannedKm'|'odometerKm'|'gpsKm'|'boardings'|'alightings'|'uniquePassengers'|'registeredPassengers'|'trips'|'completedTrips'|'noShows'|'occupancy'|'incidents'|'offRouteSamples';
+export type ReportDefinition={id:string;name:string;filters:ReportFilters;metrics:MetricKey[];groupBy:'route'|'day'|'company'|'driver'|'vehicle';chart:'bar'|'line'|'table';createdAt?:string;updatedAt?:string};
+export type Message = {id:string;title:string;body:string;audience:'all'|'drivers'|'passengers';at:string};
+export type State = {workspace:{name:string;demo:boolean};routes:Route[];vehicles:Vehicle[];drivers:Driver[];passengers:Passenger[];trips:Trip[];bookings:Booking[];events:TripEvent[];locations:Location[];messages:Message[];savedReports?:ReportDefinition[];settings:{emailAlerts:boolean;approachAlerts:boolean;defaultCapacity:number};version:number};
+export type Action = Record<string,unknown> & {type:string};
+export type Mutate = (action:Action)=>Promise<any>;
+export function occupancy(s:State,tripId:string){const inside=new Set<string>();s.events.filter(e=>e.tripId===tripId).sort((a,b)=>a.at.localeCompare(b.at)).forEach(e=>{if(e.passengerId&&e.kind==='boarding')inside.add(e.passengerId);if(e.passengerId&&e.kind==='alighting')inside.delete(e.passengerId)});return inside.size;}
+export const fmt = (n:number)=>new Intl.NumberFormat('pt-BR').format(n);
+export const clock = (at:string)=>new Date(at).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit',timeZone:'America/Sao_Paulo'});
+export const localDate = ()=>new Intl.DateTimeFormat('en-CA',{timeZone:'America/Sao_Paulo'}).format(new Date());

@@ -1,0 +1,26 @@
+{
+  "id": "/?profile=admin",
+  "name": "Vértice — Gestão de mobilidade",
+  "short_name": "Vértice Gestão",
+  "description": "Fretamento conectado: pessoas, rotas e destinos.",
+  "lang": "pt-BR",
+  "start_url": "/?profile=admin",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0b0e11",
+  "theme_color": "#0b0e11",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
