@@ -68,6 +68,10 @@
             </a>
             <a class="btn btn--ghost btn--lg" href="#servicos">Ver pacotes</a>
           </div>
+          <p class="hero__assure">
+            <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg> Orçamento sem compromisso</span>
+            <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg> Direto no WhatsApp</span>
+          </p>
           <ul class="hero__facts">
             <li><strong>Entrega</strong><span>no mesmo dia</span></li>
             <li><strong>Formato</strong><span>9:16 nativo</span></li>
@@ -130,6 +134,36 @@
       </div>
     </section>
 
+    <!-- PORTFÓLIO EM FORMATO STORIES -->
+    <section class="section reel" id="portfolio" aria-label="Exemplos de conteúdo">
+      <div class="container">
+        <header class="section__head">
+          <p class="kicker">Na prática</p>
+          <h2>Veja como seu conteúdo <em>pode ficar</em></h2>
+          <p class="sub">Toque nos cards para passar, como nos stories.</p>
+        </header>
+      </div>
+      <!-- Troque as imagens por vídeos reais de clientes (<video autoplay muted loop playsinline>) quando houver -->
+      <div class="reel__track" tabindex="0" aria-label="Galeria de exemplos, role para o lado">
+        <figure class="reel__card" data-tag="Bastidores">
+          <img src="assets/img/izadora-estudio.webp" alt="Exemplo de story de bastidores" width="1000" height="1333" loading="lazy" />
+          <figcaption><b>Bastidores</b><span>Mostra quem faz a sua marca acontecer.</span></figcaption>
+        </figure>
+        <figure class="reel__card" data-tag="Produto">
+          <img src="assets/img/izadora-hero.webp" alt="Exemplo de story de produto" width="1000" height="1250" loading="lazy" />
+          <figcaption><b>Produto em uso</b><span>Gente real usando, comendo, vivendo.</span></figcaption>
+        </figure>
+        <figure class="reel__card" data-tag="Rotina">
+          <img src="assets/img/izadora-sorriso.webp" alt="Exemplo de story de rotina" width="1000" height="1250" loading="lazy" />
+          <figcaption><b>Rotina do dia</b><span>Presença diária sem você parar o trabalho.</span></figcaption>
+        </figure>
+        <figure class="reel__card" data-tag="Evento">
+          <img src="assets/img/izadora-retrato.webp" alt="Exemplo de story de evento" width="1000" height="1250" loading="lazy" />
+          <figcaption><b>Evento ao vivo</b><span>Stories postados enquanto a festa acontece.</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
     <!-- SERVIÇOS -->
     <section class="section services" id="servicos">
       <div class="container">
@@ -139,8 +173,18 @@
           <p class="sub">Todos incluem captação no local, edição com legendas e trilha, e entrega pronta para postar.</p>
         </header>
 
+        <div class="chooser" role="group" aria-label="Qual é o seu momento?">
+          <p class="chooser__q">Não sabe qual escolher? <b>Qual é o seu momento?</b></p>
+          <div class="chooser__opts">
+            <button type="button" data-pick="50">Quero começar ou testar</button>
+            <button type="button" data-pick="100">Quero conteúdo para semanas</button>
+            <button type="button" data-pick="mensal">Quero presença todo mês</button>
+            <button type="button" data-pick="evento">Tenho um evento</button>
+          </div>
+        </div>
+
         <div class="plans">
-          <article class="plan">
+          <article class="plan" data-plan="50">
             <div class="plan__top">
               <span class="tag">Pacote</span>
               <h3><span class="big">50</span> mídias</h3>
@@ -155,7 +199,7 @@
             <a class="btn btn--outline" data-wa="Olá, Izadora! Tenho interesse no pacote de 50 mídias." href="#contato">Quero o de 50</a>
           </article>
 
-          <article class="plan plan--featured">
+          <article class="plan plan--featured" data-plan="100">
             <span class="ribbon">Mais escolhido</span>
             <div class="plan__top">
               <span class="tag">Pacote</span>
@@ -171,7 +215,7 @@
             <a class="btn btn--primary" data-wa="Olá, Izadora! Tenho interesse no pacote de 100 mídias." href="#contato">Quero o de 100</a>
           </article>
 
-          <article class="plan">
+          <article class="plan" data-plan="mensal">
             <div class="plan__top">
               <span class="tag">Contrato</span>
               <h3>Mensal</h3>
@@ -186,7 +230,7 @@
             <a class="btn btn--outline" data-wa="Olá, Izadora! Quero saber sobre o contrato mensal." href="#contato">Falar sobre contrato</a>
           </article>
 
-          <article class="plan plan--event">
+          <article class="plan plan--event" data-plan="evento">
             <div class="plan__top">
               <span class="tag">Eventos</span>
               <h3>Cobertura</h3>
@@ -299,6 +343,14 @@
             <p>Parte do conteúdo sai no mesmo dia da captação. O restante é entregue em poucos dias, conforme o pacote combinado.</p>
           </details>
           <details>
+            <summary>Eu preciso aparecer nos vídeos?</summary>
+            <p>Não. Dá para mostrar produtos, ambiente, equipe e clientes. Se você quiser aparecer, eu te guio na hora para ficar natural.</p>
+          </details>
+          <details>
+            <summary>Meu perfil é pequeno. Vale a pena?</summary>
+            <p>Vale. Conteúdo constante e bem feito é o que faz um perfil crescer e passar confiança para quem chega pela primeira vez.</p>
+          </details>
+          <details>
             <summary>Como faço para reservar uma data?</summary>
             <p>Me chama pelo formulário abaixo ou pelo WhatsApp. A data fica reservada após a confirmação do orçamento.</p>
           </details>
@@ -319,20 +371,18 @@
             <span>Seu nome</span>
             <input name="nome" type="text" autocomplete="name" required placeholder="Como posso te chamar?" />
           </label>
-          <label>
-            <span>Empresa ou evento</span>
-            <input name="empresa" type="text" placeholder="Ex.: Pousada Sol, casamento da Ana" />
-          </label>
+          <fieldset class="pills">
+            <legend>O que você procura?</legend>
+            <label><input type="radio" name="servico" value="Pacote 50 mídias" /><span>50 mídias</span></label>
+            <label><input type="radio" name="servico" value="Pacote 100 mídias" checked /><span>100 mídias</span></label>
+            <label><input type="radio" name="servico" value="Contrato mensal" /><span>Mensal</span></label>
+            <label><input type="radio" name="servico" value="Cobertura de evento" /><span>Evento</span></label>
+            <label><input type="radio" name="servico" value="Ainda não sei" /><span>Não sei ainda</span></label>
+          </fieldset>
           <div class="form__row">
             <label>
-              <span>Interesse</span>
-              <select name="servico">
-                <option>Pacote 50 mídias</option>
-                <option selected>Pacote 100 mídias</option>
-                <option>Contrato mensal</option>
-                <option>Cobertura de evento</option>
-                <option>Ainda não sei</option>
-              </select>
+              <span>Empresa ou evento <em>(opcional)</em></span>
+              <input name="empresa" type="text" placeholder="Ex.: Pousada Sol" />
             </label>
             <label>
               <span>Cidade</span>
@@ -373,10 +423,17 @@
     </div>
   </footer>
 
-  <!-- WhatsApp flutuante (mobile) -->
-  <a class="fab" href="#contato" data-wa="Olá, Izadora! Vim pelo site e quero um orçamento." aria-label="Falar no WhatsApp">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z"/><path d="M8.5 9.5c.5 2.5 3 5 5.5 5.5l1.2-1.2 1.8.8c-.3 1.2-1.3 1.9-2.5 1.7-3.3-.6-6.1-3.4-6.8-6.8-.2-1.2.5-2.2 1.7-2.5l.8 1.8z" class="fill"/></svg>
-  </a>
+  <!-- Barra fixa de ação (mobile, zona do polegar) -->
+  <div class="dock" aria-label="Ações rápidas">
+    <a class="dock__main" href="#contato">Pedir orçamento</a>
+    <a class="dock__wa" href="#contato" data-wa="Olá, Izadora! Vim pelo site e quero um orçamento." aria-label="Falar no WhatsApp">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z"/><path d="M8.5 9.5c.5 2.5 3 5 5.5 5.5l1.2-1.2 1.8.8c-.3 1.2-1.3 1.9-2.5 1.7-3.3-.6-6.1-3.4-6.8-6.8-.2-1.2.5-2.2 1.7-2.5l.8 1.8z" class="fill"/></svg>
+      WhatsApp
+    </a>
+  </div>
+
+  <!-- Barra de progresso de leitura -->
+  <div class="progress" aria-hidden="true"></div>
 
   <script src="script.js" defer></script>
 </body>
