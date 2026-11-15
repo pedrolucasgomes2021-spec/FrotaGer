@@ -402,35 +402,6 @@ body::before {
 .hero__assure span { display: inline-flex; align-items: center; gap: 6px; }
 .hero__assure svg { color: #6fd0a0; font-size: 15px; stroke-width: 2.4; }
 
-/* Portfólio em formato stories */
-.reel { padding-bottom: clamp(56px, 8vw, 100px); overflow: hidden; }
-.reel .section__head { margin-bottom: 32px; }
-.reel__track {
-  display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
-  padding: 10px max(var(--gutter), calc((100vw - var(--container)) / 2 + var(--gutter))) 24px;
-  scrollbar-width: none;
-}
-.reel__track::-webkit-scrollbar { display: none; }
-.reel__card {
-  position: relative; flex: 0 0 min(64vw, 270px); aspect-ratio: 9 / 16; margin: 0; border-radius: 22px; overflow: hidden;
-  scroll-snap-align: center; background: var(--espresso); box-shadow: var(--shadow); cursor: pointer;
-  transition: transform .4s cubic-bezier(.2, .7, .2, 1);
-}
-.reel__card img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; transition: transform 6s ease; }
-.reel__card.is-active img { transform: scale(1.08); }
-.reel__card::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(0,0,0,.35), transparent 25%, transparent 55%, rgba(43, 11, 14, .9)); }
-.reel__card::after { /* barra de progresso do story */
-  content: ""; position: absolute; top: 12px; left: 12px; right: 12px; height: 3px; z-index: 2; border-radius: 3px;
-  background: linear-gradient(90deg, #fff var(--p, 0%), rgba(255, 255, 255, .35) var(--p, 0%));
-}
-.reel__card figcaption { position: absolute; left: 16px; right: 16px; bottom: 18px; z-index: 2; color: #fff; display: grid; gap: 4px; }
-.reel__card figcaption b { font-family: var(--serif); font-weight: 400; font-size: 24px; line-height: 1.1; }
-.reel__card figcaption span { font-size: 13.5px; color: rgba(255, 255, 255, .82); line-height: 1.4; }
-@supports (animation-timeline: view()) {
-  @media (max-width: 959px) { .reel__card { animation: cardFocus linear both; animation-timeline: view(inline); } }
-  @keyframes cardFocus { 0% { transform: scale(.88); opacity: .6; } 50% { transform: scale(1); opacity: 1; } 100% { transform: scale(.88); opacity: .6; } }
-}
-
 /* Seletor "qual é o seu momento?" */
 .chooser { text-align: center; margin: -16px auto 34px; max-width: 920px; }
 .chooser__q { color: var(--text-soft); margin-bottom: 14px; font-size: 15px; }
@@ -483,8 +454,6 @@ body::before {
   .dock { left: auto; right: 24px; bottom: 24px; padding: 0; background: none; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; }
   .dock__main { display: none !important; }
   .dock__wa { box-shadow: 0 14px 30px -10px rgba(0, 0, 0, .45); }
-  .reel__card:first-child { margin-left: auto; }
-  .reel__card:last-child { margin-right: auto; }
 }
 
 /* Barra de progresso de leitura (CSS scroll-driven, com fallback via JS) */
@@ -495,6 +464,6 @@ body::before {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reel__card, .progress { animation: none !important; }
-  .reel__card.is-active img { transform: none; }
+  .progress { animation: none !important; }
 }
+@media (max-width: 959px) { .chip--a { top: 54%; } .chip--b { bottom: 24%; } }

@@ -193,57 +193,6 @@ document.querySelectorAll("[data-pick]").forEach((btn, _, all) => {
   });
 });
 
-// Galeria em formato stories: avança sozinha, toque passa para o próximo
-const track = document.querySelector(".reel__track");
-if (track) {
-  const cards = [...track.querySelectorAll(".reel__card")];
-  const DURATION = 5000;
-  let active = 0, start = 0, visible = false, pausedUntil = 0;
-
-  const setActive = (i) => {
-    active = (i + cards.length) % cards.length;
-    cards.forEach((c, k) => {
-      c.classList.toggle("is-active", k === active);
-      if (k < active) c.style.setProperty("--p", "100%");
-      else if (k > active) c.style.setProperty("--p", "0%");
-    });
-    start = performance.now();
-  };
-  const goTo = (i) => {
-    setActive(i);
-    const c = cards[active];
-    track.scrollTo({ left: c.offsetLeft - (track.clientWidth - c.clientWidth) / 2, behavior: reduceMotion ? "auto" : "smooth" });
-  };
-  cards.forEach((c, i) => c.addEventListener("click", () => goTo(i === active ? i + 1 : i)));
-
-  // Usuário arrastou: o card central vira o ativo e o autoplay espera um pouco
-  let scrollT;
-  track.addEventListener("scroll", () => {
-    clearTimeout(scrollT);
-    scrollT = setTimeout(() => {
-      const mid = track.scrollLeft + track.clientWidth / 2;
-      const i = cards.reduce((best, c, k) => Math.abs(c.offsetLeft + c.clientWidth / 2 - mid) < Math.abs(cards[best].offsetLeft + cards[best].clientWidth / 2 - mid) ? k : best, 0);
-      if (i !== active) setActive(i);
-    }, 120);
-  }, { passive: true });
-  ["pointerdown", "touchstart"].forEach((ev) => track.addEventListener(ev, () => { pausedUntil = performance.now() + 4000; }, { passive: true }));
-
-  new IntersectionObserver(([e]) => { visible = e.isIntersecting; if (visible) start = performance.now(); }, { threshold: 0.4 }).observe(track);
-
-  const tick = (now) => {
-    if (visible && !reduceMotion && now > pausedUntil) {
-      const p = Math.min(1, (now - start) / DURATION);
-      cards[active].style.setProperty("--p", `${(p * 100).toFixed(1)}%`);
-      if (p >= 1) goTo(active + 1 >= cards.length ? 0 : active + 1);
-    } else if (now <= pausedUntil) {
-      start = now - (parseFloat(cards[active].style.getPropertyValue("--p")) || 0) / 100 * DURATION;
-    }
-    requestAnimationFrame(tick);
-  };
-  setActive(0);
-  requestAnimationFrame(tick);
-}
-
 // Barra fixa: aparece depois do hero e some quando o formulário está na tela
 const dock = document.querySelector(".dock");
 const heroEl = document.querySelector(".hero");
