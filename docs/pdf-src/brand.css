@@ -1,0 +1,115 @@
+
+  @page { size: A4; margin: 0; }
+  :root {
+    --ink: #2b0b0e; --wine: #530f14; --copper: #b8673f; --honey: #e09a6e;
+    --off: #faf8f5; --paper: #f4f2ef; --line: #e6e1dc; --text: #2b0b0e; --soft: #6e5a5d;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: "Manrope", sans-serif; color: var(--text); font-size: 10.6pt; line-height: 1.55; background: var(--off); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  h1, h2, h3 { font-family: "Fraunces", Georgia, serif; font-weight: 400; margin: 0; letter-spacing: -.01em; line-height: 1.12; }
+  h2 { font-size: 26pt; margin-bottom: 6mm; }
+  h2 em, h1 em { color: var(--copper); font-style: italic; }
+  h3 { font-size: 14pt; margin: 5mm 0 2.5mm; }
+  p { margin: 0 0 3mm; }
+  ul, ol { margin: 0 0 3mm; padding-left: 5mm; }
+  li { margin-bottom: 1.4mm; }
+  b, strong { font-weight: 700; }
+
+  .page { width: 210mm; height: 297mm; padding: 20mm 18mm 22mm; position: relative; page-break-after: always; break-after: page; background: var(--off); overflow: hidden; }
+  .page:last-child { page-break-after: auto; break-after: auto; }
+  .kicker { font-size: 8pt; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: var(--copper); margin-bottom: 3mm; }
+  .lead { font-size: 11.5pt; color: var(--soft); max-width: 150mm; margin-bottom: 6mm; }
+  .footer { position: absolute; left: 18mm; right: 18mm; bottom: 10mm; display: flex; justify-content: space-between; align-items: center; font-size: 7.5pt; color: var(--soft); border-top: 1px solid var(--line); padding-top: 3mm; }
+  .footer img { height: 9mm; }
+
+  /* Capa */
+  .cover { background: var(--ink); color: var(--off); display: flex; flex-direction: column; justify-content: space-between; padding: 26mm 20mm 20mm; }
+  .cover::before { content: ""; position: absolute; width: 170mm; height: 170mm; border-radius: 50%; right: -60mm; top: -50mm; background: radial-gradient(circle, rgba(184,103,63,.45), transparent 65%); }
+  .cover::after { content: ""; position: absolute; width: 130mm; height: 130mm; border-radius: 50%; left: -50mm; bottom: -40mm; background: radial-gradient(circle, rgba(83,15,20,.95), transparent 70%); }
+  .cover > * { position: relative; z-index: 1; }
+  .cover .logo { width: 78mm; }
+  .cover h1 { font-size: 40pt; margin: 0 0 6mm; }
+  .cover .sub { font-size: 13pt; color: #d9c7c9; max-width: 140mm; }
+  .cover .meta { display: flex; gap: 10mm; font-size: 9pt; color: #cbb8ba; border-top: 1px solid rgba(250,248,245,.15); padding-top: 6mm; }
+  .cover .meta b { display: block; color: var(--honey); font-family: "Fraunces", serif; font-weight: 400; font-size: 13pt; }
+
+  /* Componentes */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: 4mm; padding: 4.2mm; break-inside: avoid; }
+  .card h3 { margin-top: 0; }
+  .card p:last-child, .card ul:last-child { margin-bottom: 0; }
+  .card.dark { background: var(--ink); color: var(--off); border-color: var(--ink); }
+  .card.dark p, .card.dark li { color: #e6d8d9; }
+  .card.copper { background: #f7ece5; border-color: #ecd3c4; }
+  .num { font-family: "Fraunces", serif; font-size: 26pt; color: var(--copper); line-height: 1; }
+  .stat .num { display: block; margin-bottom: 1.5mm; }
+  .stat span { font-size: 9pt; color: var(--soft); }
+  .tag { display: inline-block; font-size: 7.5pt; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 1mm 2.5mm; border-radius: 10mm; background: var(--copper); color: var(--ink); margin-bottom: 2.5mm; }
+  .tag.ghost { background: transparent; border: 1px solid var(--copper); color: var(--copper); }
+  table { width: 100%; border-collapse: collapse; font-size: 9pt; margin-bottom: 4mm; break-inside: auto; }
+  th { text-align: left; font-size: 7.5pt; letter-spacing: .1em; text-transform: uppercase; color: var(--off); background: var(--ink); padding: 2.6mm 3mm; }
+  th:first-child { border-radius: 2mm 0 0 0; } th:last-child { border-radius: 0 2mm 0 0; }
+  td { padding: 2.6mm 3mm; border-bottom: 1px solid var(--line); vertical-align: top; background: #fff; }
+  tr { break-inside: avoid; }
+  td b { color: var(--wine); }
+  .script { background: #fff; border-left: 3px solid var(--copper); border-radius: 0 3mm 3mm 0; padding: 4mm 5mm; margin-bottom: 4mm; break-inside: avoid; font-size: 9.8pt; }
+  .script .who { font-size: 7.5pt; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--copper); margin-bottom: 2mm; }
+  .script p { margin-bottom: 2mm; }
+  .note { font-size: 8.5pt; color: var(--soft); border-top: 1px dashed var(--line); padding-top: 3mm; margin-top: 4mm; }
+  .check li { list-style: none; position: relative; padding-left: 6mm; }
+  .check { padding-left: 0; }
+  .check li::before { content: ""; position: absolute; left: 0; top: 1.2mm; width: 3.4mm; height: 3.4mm; border: 1.4px solid var(--copper); border-radius: 1mm; }
+  .timeline { position: relative; padding-left: 8mm; }
+  .timeline::before { content: ""; position: absolute; left: 2mm; top: 2mm; bottom: 2mm; width: 1.5px; background: var(--copper); opacity: .5; }
+  .step { position: relative; margin-bottom: 5mm; break-inside: avoid; }
+  .step::before { content: ""; position: absolute; left: -7.6mm; top: 1.4mm; width: 3.5mm; height: 3.5mm; border-radius: 50%; background: var(--copper); box-shadow: 0 0 0 1.5mm var(--off); }
+  .step .when { font-size: 8pt; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--copper); }
+  .step h3 { margin: .5mm 0 1.5mm; font-size: 13pt; }
+  .step ul { margin-bottom: 0; }
+  .highlight { background: var(--ink); color: var(--off); border-radius: 4mm; padding: 7mm; margin: 4mm 0; break-inside: avoid; position: relative; overflow: hidden; }
+  .highlight::after { content: ""; position: absolute; right: -25mm; top: -25mm; width: 70mm; height: 70mm; border-radius: 50%; background: radial-gradient(circle, rgba(184,103,63,.5), transparent 65%); }
+  .highlight > * { position: relative; z-index: 1; }
+  .highlight h3 { font-size: 20pt; margin: 0 0 3mm; color: var(--off); }
+  .highlight h3 em { color: var(--honey); }
+  .highlight p, .highlight li { color: #e6d8d9; }
+  .pill { display: inline-block; border: 1px solid rgba(250,248,245,.3); border-radius: 10mm; padding: 1.2mm 3mm; font-size: 8.5pt; margin: 0 1.5mm 1.5mm 0; color: var(--off); }
+  .funnel { display: grid; gap: 2mm; margin: 3mm 0 5mm; }
+  .funnel div { background: var(--ink); color: var(--off); border-radius: 2mm; padding: 2.8mm 4mm; display: flex; justify-content: space-between; align-items: center; font-size: 9.5pt; margin: 0 auto; }
+  .funnel div b { font-family: "Fraunces", serif; font-weight: 400; font-size: 14pt; color: var(--honey); }
+  .toc { counter-reset: t; list-style: none; padding: 0; columns: 2; column-gap: 10mm; }
+  .toc li { counter-increment: t; padding: 2.4mm 0; border-bottom: 1px solid var(--line); font-weight: 600; break-inside: avoid; }
+  .toc li::before { content: counter(t, decimal-leading-zero); font-family: "Fraunces", serif; color: var(--copper); margin-right: 3mm; font-weight: 400; }
+
+  /* ---- extras para catálogo, produto e calendário ---- */
+  .photo { border-radius: 4mm; overflow: hidden; background: var(--ink); }
+  .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; align-items: start; }
+  .split-6040 { display: grid; grid-template-columns: 1.25fr .85fr; gap: 8mm; align-items: start; }
+  .bignum { font-family: "Fraunces", serif; font-size: 64pt; line-height: .9; color: var(--copper); }
+  .price { display: flex; justify-content: space-between; align-items: center; background: var(--ink); color: var(--off); border-radius: 3mm; padding: 4mm 5mm; margin-top: 5mm; }
+  .price span { font-size: 8pt; letter-spacing: .14em; text-transform: uppercase; color: #cbb8ba; font-weight: 800; }
+  .price b { font-family: "Fraunces", serif; font-weight: 400; font-size: 15pt; color: var(--honey); }
+  .ideal { font-size: 9.5pt; color: var(--soft); }
+  .ideal b { color: var(--text); }
+  .flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; margin: 4mm 0; }
+  .flow div { background: #fff; border: 1px solid var(--line); border-radius: 3mm; padding: 4mm 3.5mm; position: relative; break-inside: avoid; }
+  .flow div b { display: block; font-family: "Fraunces", serif; font-weight: 400; color: var(--copper); font-size: 18pt; line-height: 1; margin-bottom: 2mm; }
+  .flow div p { font-size: 9pt; margin: 0; }
+  .month { display: grid; grid-template-columns: 26mm 1fr; gap: 5mm; padding: 4mm 0; border-bottom: 1px solid var(--line); break-inside: avoid; }
+  .month .m { font-family: "Fraunces", serif; font-size: 18pt; color: var(--copper); line-height: 1; }
+  .month .m small { display: block; font-family: "Manrope", sans-serif; font-size: 7.5pt; letter-spacing: .12em; text-transform: uppercase; color: var(--soft); margin-top: 1.5mm; }
+  .month h3 { margin: 0 0 1.5mm; font-size: 13.5pt; }
+  .month p { margin: 0 0 1.5mm; font-size: 9.6pt; }
+  .month .rules { font-size: 8.6pt; color: var(--soft); }
+  .q { display: inline-block; font-size: 7.5pt; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 1mm 2.5mm; border-radius: 10mm; border: 1px solid var(--copper); color: var(--copper); margin-left: 2mm; vertical-align: middle; }
+  .phone { width: 52mm; aspect-ratio: 9/18.5; border-radius: 7mm; background: var(--ink); padding: 2.4mm; box-shadow: 0 10mm 20mm -8mm rgba(43,11,14,.5); margin: 0 auto; }
+  .phone .screen { width: 100%; height: 100%; border-radius: 5mm; background: var(--off); overflow: hidden; display: flex; flex-direction: column; }
+  .phone .bar { background: var(--ink); color: var(--off); padding: 3mm 3mm 2.5mm; font-size: 6.5pt; }
+  .phone .bar b { display: block; font-family: "Fraunces", serif; font-weight: 400; font-size: 9.5pt; }
+  .phone .live { display: inline-flex; align-items: center; gap: 1mm; font-size: 5.5pt; font-weight: 800; letter-spacing: .1em; color: var(--honey); }
+  .phone .live::before { content: ""; width: 1.6mm; height: 1.6mm; border-radius: 50%; background: #e0533d; }
+  .phone .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1mm; padding: 1mm; flex: 1; }
+  .phone .grid div { background-size: cover; background-position: center 20%; border-radius: 1mm; }
+  .phone .cta { margin: 1.5mm; background: var(--copper); color: var(--ink); border-radius: 10mm; text-align: center; font-size: 6pt; font-weight: 800; padding: 1.8mm; }
