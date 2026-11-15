@@ -221,7 +221,7 @@ if (!CSS.supports("animation-timeline: scroll()")) {
 // Clientes Fundadores: vagas e contagem regressiva
 // Atualize CONFIG_FUNDADORES.restantes a cada fechamento.
 // =========================================================
-const CONFIG_FUNDADORES = { total: 5, restantes: 5 };
+const CONFIG_FUNDADORES = { total: 5, restantes: 2 };
 const founders = document.getElementById("fundadores");
 if (founders) {
   const deadline = new Date(founders.dataset.deadline).getTime();
