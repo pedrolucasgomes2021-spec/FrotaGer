@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<title>Carrossel · Produtos</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root { --ink:#2b0b0e; --wine:#530f14; --copper:#b8673f; --honey:#e09a6e; --off:#faf8f5; --paper:#f4f2ef; --line:#e6e1dc; --soft:#6e5a5d; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #777; font-family: "Manrope", sans-serif; display: grid; gap: 40px; padding: 40px; justify-content: center; }
+  .slide { width: 1080px; height: 1350px; position: relative; overflow: hidden; padding: 110px 96px 120px; display: flex; flex-direction: column; background: var(--off); color: var(--ink); }
+  .slide.dark { background: var(--ink); color: var(--off); }
+  .slide.dark::before { content: ""; position: absolute; width: 900px; height: 900px; border-radius: 50%; right: -380px; top: -360px; background: radial-gradient(circle, rgba(184,103,63,.5), transparent 65%); }
+  .slide > * { position: relative; z-index: 1; }
+  h1, h2 { font-family: "Fraunces", serif; font-weight: 400; letter-spacing: -.02em; line-height: 1.04; }
+  h1 { font-size: 112px; }
+  h2 { font-size: 86px; }
+  em { font-style: italic; color: var(--copper); }
+  .dark em { color: var(--honey); }
+  .kicker { font-size: 26px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: var(--copper); margin-bottom: 34px; }
+  .dark .kicker { color: var(--honey); }
+  .sub { font-size: 40px; line-height: 1.35; color: var(--soft); margin-top: 36px; max-width: 820px; }
+  .dark .sub { color: #d9c7c9; }
+  .grow { flex: 1; }
+  .foot { position: absolute; left: 96px; right: 96px; bottom: 56px; display: flex; justify-content: space-between; align-items: center; font-size: 26px; font-weight: 700; color: var(--soft); }
+  .dark .foot { color: #cbb8ba; }
+  .dots { display: flex; gap: 10px; }
+  .dots i { width: 12px; height: 12px; border-radius: 50%; background: currentColor; opacity: .3; }
+  .dots i.on { opacity: 1; background: var(--copper); width: 34px; border-radius: 8px; }
+  .swipe { font-size: 30px; font-weight: 800; color: var(--copper); }
+  .dark .swipe { color: var(--honey); }
+  .tag { display: inline-block; align-self: flex-start; font-size: 24px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; padding: 14px 26px; border-radius: 99px; background: var(--copper); color: var(--ink); }
+  .q { font-family: "Fraunces", serif; font-style: italic; font-size: 52px; color: var(--copper); margin-bottom: 24px; }
+  .dark .q { color: var(--honey); }
+  .big { font-family: "Fraunces", serif; font-size: 300px; line-height: .82; color: var(--copper); letter-spacing: -.04em; }
+  .list { list-style: none; margin-top: 50px; display: grid; gap: 26px; }
+  .list li { font-size: 40px; line-height: 1.3; display: flex; gap: 22px; }
+  .list li::before { content: "✦"; color: var(--copper); font-size: 30px; padding-top: 6px; }
+  .dark .list li::before { color: var(--honey); }
+  .ideal { margin-top: auto; padding-top: 34px; border-top: 2px solid var(--line); font-size: 32px; color: var(--soft); }
+  .dark .ideal { border-color: rgba(250,248,245,.15); color: #cbb8ba; }
+  .ideal b { color: var(--ink); }
+  .dark .ideal b { color: var(--off); }
+
+  /* capa */
+  .cover { padding: 0; }
+  .cover .photo { position: absolute; inset: 0; }
+  .cover .photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; }
+  .cover .photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(43,11,14,.05) 20%, rgba(43,11,14,.75) 55%, var(--ink) 82%); }
+  .cover .content { position: absolute; left: 96px; right: 96px; bottom: 150px; color: var(--off); }
+  .cover h1 { font-size: 104px; }
+  .cover h1 em { color: var(--honey); }
+  .cover .sub { color: #e6d8d9; margin-top: 28px; }
+  .cover .logo { position: absolute; top: 80px; left: 96px; height: 120px; }
+
+  /* passos */
+  .steps { display: grid; gap: 30px; margin-top: 70px; }
+  .step { display: grid; grid-template-columns: 110px 1fr; align-items: center; gap: 30px; padding: 34px 40px; background: #fff; border: 2px solid var(--line); border-radius: 36px; }
+  .step b { font-family: "Fraunces", serif; font-weight: 400; font-size: 86px; color: var(--copper); line-height: 1; }
+  .step h3 { font-family: "Fraunces", serif; font-weight: 400; font-size: 46px; }
+  .step p { font-size: 30px; color: var(--soft); margin-top: 4px; }
+
+  /* níveis */
+  .tiers { display: grid; gap: 22px; margin-top: 50px; }
+  .tier { padding: 30px 40px; border-radius: 32px; border: 2px solid rgba(250,248,245,.18); }
+  .tier.on { background: var(--copper); border-color: var(--copper); color: var(--ink); }
+  .tier h3 { font-family: "Fraunces", serif; font-weight: 400; font-size: 48px; display: flex; justify-content: space-between; align-items: center; }
+  .tier h3 span { font-family: "Manrope", sans-serif; font-size: 20px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; background: var(--ink); color: var(--honey); padding: 10px 18px; border-radius: 99px; }
+  .tier p { font-size: 30px; margin-top: 6px; color: #d9c7c9; }
+  .tier.on p { color: var(--ink); }
+
+  /* álbum */
+  .album { display: grid; grid-template-columns: 1fr 360px; gap: 50px; align-items: center; flex: 1; }
+  .phone { width: 360px; aspect-ratio: 9/18.5; border-radius: 52px; background: #140507; padding: 16px; box-shadow: 0 40px 80px -30px rgba(0,0,0,.7); }
+  .screen { width: 100%; height: 100%; border-radius: 38px; background: var(--off); overflow: hidden; display: flex; flex-direction: column; }
+  .bar { background: var(--ink); color: var(--off); padding: 26px 22px 20px; font-size: 18px; }
+  .bar b { display: block; font-family: "Fraunces", serif; font-weight: 400; font-size: 28px; margin-top: 6px; }
+  .live { font-size: 16px; font-weight: 800; letter-spacing: .12em; color: var(--honey); display: flex; align-items: center; gap: 8px; }
+  .live::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: #e0533d; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 6px; flex: 1; }
+  .tile { border-radius: 8px; position: relative; }
+  .tile::after { content: ""; position: absolute; inset: 0; border-radius: 8px; background: radial-gradient(circle at 30% 25%, rgba(255,255,255,.35), transparent 45%); }
+  .t1 { background: linear-gradient(150deg, #e09a6e, #8a3a1f); } .t2 { background: linear-gradient(150deg, #6b2329, #2b0b0e); }
+  .t3 { background: linear-gradient(150deg, #d9b79a, #a8693f); } .t4 { background: linear-gradient(150deg, #b8673f, #530f14); }
+  .t5 { background: linear-gradient(150deg, #f1d7c2, #c58a62); } .t6 { background: linear-gradient(150deg, #7a2f2a, #3a1216); }
+  .cta-btn { margin: 10px; background: var(--copper); color: var(--ink); border-radius: 99px; text-align: center; font-size: 18px; font-weight: 800; padding: 14px; }
+
+  /* resumo */
+  .pick { display: grid; gap: 22px; margin-top: 60px; }
+  .pick div { display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; padding: 34px 40px; background: #fff; border: 2px solid var(--line); border-radius: 32px; font-size: 34px; }
+  .pick b { font-family: "Fraunces", serif; font-weight: 400; font-size: 40px; color: var(--wine); white-space: nowrap; }
+
+  /* cta */
+  .final .dm { margin-top: 60px; background: var(--off); color: var(--ink); border-radius: 40px; padding: 48px; text-align: center; }
+  .final .dm p { font-size: 34px; color: var(--soft); }
+  .final .dm strong { display: block; font-family: "Fraunces", serif; font-weight: 400; font-size: 110px; color: var(--copper); letter-spacing: .02em; margin: 6px 0; }
+  .final .cities { margin-top: auto; font-size: 30px; color: #cbb8ba; line-height: 1.5; }
+</style>
+</head>
+<body>
+
+<!-- 1 · CAPA -->
+<section class="slide cover dark">
+  <div class="photo"><img src="../../../assets/img/izadora-headshot.webp" alt="" /></div>
+  <img class="logo" src="../../../assets/logo/logo-offwhite.png" alt="" />
+  <div class="content">
+    <p class="kicker">Storymaker · Região dos Lagos</p>
+    <h1>Qual conteúdo a sua marca <em>precisa agora?</em></h1>
+    <p class="sub">4 formas de trabalhar comigo →</p>
+  </div>
+  <div class="foot"><span>@izadorrasalomao</span><span class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+</section>
+
+<!-- 2 · COMO FUNCIONA -->
+<section class="slide">
+  <p class="kicker">Antes de tudo</p>
+  <h2>Como funciona, <em>em todos eles</em></h2>
+  <div class="steps">
+    <div class="step"><b>1</b><div><h3>Conversa</h3><p>Você me conta sobre a sua marca</p></div></div>
+    <div class="step"><b>2</b><div><h3>Planejamento</h3><p>Definimos datas e cenas essenciais</p></div></div>
+    <div class="step"><b>3</b><div><h3>Captação</h3><p>Vou até você e gravo na vertical</p></div></div>
+    <div class="step"><b>4</b><div><h3>Entrega</h3><p>Editado e pronto para postar</p></div></div>
+  </div>
+  <div class="foot"><span>@izadorrasalomao</span><span class="swipe">Arrasta →</span></div>
+</section>
+
+<!-- 3 · PACOTE 50 -->
+<section class="slide">
+  <p class="q">"Quero começar ou testar."</p>
+  <span class="big">50</span>
+  <h2>mídias</h2>
+  <ul class="list">
+    <li>Vídeos e fotos verticais</li>
+    <li>Uma diária de captação no seu espaço</li>
+    <li>Edição com texto, trilha e cortes</li>
+  </ul>
+  <p class="ideal"><b>Ideal para:</b> lançamento, coleção nova, inauguração</p>
+  <div class="foot"><span>@izadorrasalomao</span><span class="swipe">→</span></div>
+</section>
+
+<!-- 4 · PACOTE 100 -->
+<section class="slide dark">
+  <span class="tag">Mais escolhido</span>
+  <p class="q" style="margin-top:40px">"Quero conteúdo para semanas."</p>
+  <span class="big" style="color:var(--honey)">100</span>
+  <h2>mídias</h2>
+  <ul class="list">
+    <li>Captações em dias e horários diferentes</li>
+    <li>Edição completa e sugestões de legenda</li>
+    <li>Calendário sugerido de postagens</li>
+  </ul>
+  <p class="ideal"><b>Ideal para:</b> pousadas, restaurantes, clínicas</p>
+  <div class="foot"><span>@izadorrasalomao</span><span class="swipe">→</span></div>
+</section>
+
+<!-- 5 · MENSAL -->
+<section class="slide">
+  <p class="q">"Quero presença o mês inteiro."</p>
+  <h1 style="font-size:150px">Contrato <em>Mensal</em></h1>
+  <ul class="list">
+    <li>Visitas semanais ou quinzenais</li>
+    <li>Stories ao vivo durante a captação</li>
+    <li>Planejamento mensal de conteúdo</li>
+    <li>Prioridade na agenda</li>
+  </ul>
+  <p class="ideal"><b>Ideal para:</b> quem vive de movimento o ano todo</p>
+  <div class="foot"><span>@izadorrasalomao</span><span class="swipe">→</span></div>
+</section>
+
+<!-- 6 · EVENTOS -->
+<section class="slide dark">
+  <p class="q">"Tenho um evento."</p>
+  <h1 style="font-size:120px">Cobertura de <em>Eventos</em></h1>
+  <div class="tiers">
+    <div class="tier"><h3>Essencial</h3><p>Stories ao vivo, reels e fotos depois</p></div>
+    <div class="tier on"><h3>Ao Vivo <span>Recomendado</span></h3><p>Tudo do Essencial + Álbum ao Vivo</p></div>
+    <div class="tier"><h3>Premium</h3><p>Tudo do Ao Vivo + telão e 2º fotógrafo</p></div>
+  </div>
+  <div class="foot"><span>@izadorrasalomao</span><span class="swipe">E o que é o Álbum ao Vivo? →</span></div>
+</section>
+
+<!-- 7 · ÁLBUM AO VIVO -->
+<section class="slide">
+  <p class="kicker">Só aqui</p>
+  <h2>Álbum <em>ao Vivo</em></h2>
+  <div class="album">
+    <div>
+      <p class="sub" style="margin-top:0; color: var(--ink)">Seus convidados veem as fotos <b>durante a festa</b>.</p>
+      <ul class="list" style="margin-top:40px">
+        <li>QR code na mesa</li>
+        <li>Fotos editadas em minutos</li>
+        <li>Baixa e posta na hora</li>
+      </ul>
+    </div>
+    <div class="phone"><div class="screen">
+      <div class="bar"><span class="live">AO VIVO</span><b>Seu evento</b>fotos chegando agora</div>
+      <div class="grid"><div class="tile t1"></div><div class="tile t2"></div><div class="tile t3"></div><div class="tile t4"></div><div class="tile t5"></div><div class="tile t6"></div></div>
+      <div class="cta-btn">Baixar · Compartilhar</div>
+    </div></div>
+  </div>
+  <div class="foot"><span>@izadorrasalomao</span><span class="swipe">→</span></div>
+</section>
+
+<!-- 8 · RESUMO -->
+<section class="slide">
+  <p class="kicker">Resumindo</p>
+  <h2>Qual é o <em>seu momento?</em></h2>
+  <div class="pick">
+    <div><span>Quero começar ou testar</span><b>Pacote 50</b></div>
+    <div><span>Quero conteúdo para semanas</span><b>Pacote 100</b></div>
+    <div><span>Quero presença todo mês</span><b>Mensal</b></div>
+    <div><span>Tenho um evento</span><b>Cobertura</b></div>
+  </div>
+  <div class="foot"><span>@izadorrasalomao</span><span class="swipe">→</span></div>
+</section>
+
+<!-- 9 · CTA -->
+<section class="slide dark final">
+  <p class="kicker">Vamos conversar?</p>
+  <h2>Me conta qual é <em>o seu</em> e eu monto a proposta</h2>
+  <div class="dm">
+    <p>Manda no direct a palavra</p>
+    <strong>ORÇAMENTO</strong>
+    <p>Orçamento sem compromisso</p>
+  </div>
+  <p class="cities">Cabo Frio · Búzios · Arraial do Cabo · São Pedro da Aldeia · Casimiro de Abreu · Araruama · Saquarema · Rio das Ostras</p>
+  <div class="foot"><span>@izadorrasalomao</span><span class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i></span></div>
+</section>
+
+</body>
+</html>
