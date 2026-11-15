@@ -22,11 +22,8 @@
   <!-- NAV -->
   <header class="nav" id="topo">
     <div class="container nav__inner">
-      <a href="#topo" class="brand" aria-label="Izadora Souza, início">
-        <span class="brand__mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M3 7l3-4h3L6 7M9 7l3-4h3l-3 4M15 7l3-4h3l-3 4" /><path d="M10.5 11v5l4-2.5z" class="fill"/></svg>
-        </span>
-        <span class="brand__name">Izadora Souza<small>storymaker</small></span>
+      <a href="#topo" class="brand" aria-label="Izadora, início">
+        <img src="assets/logo/logo-offwhite.png" alt="Logo Izadora, storymaker" width="555" height="383" />
       </a>
       <nav class="nav__links" aria-label="Principal">
         <a href="#servicos">Serviços</a>
@@ -51,11 +48,18 @@
   <main id="conteudo">
     <!-- HERO -->
     <section class="hero">
-      <div class="hero__glow" aria-hidden="true"></div>
+      <div class="hero__glow" aria-hidden="true">
+        <span class="blob blob--a"></span>
+        <span class="blob blob--b"></span>
+        <span class="blob blob--c"></span>
+      </div>
+      <div class="hero__grid-lines" aria-hidden="true"></div>
+      <span class="float float--1" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7l8 5-8 5z"/></svg></span>
+      <span class="float float--2" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="12" rx="3"/></svg></span>
       <div class="container hero__grid">
         <div class="hero__copy">
           <p class="eyebrow"><span class="dot"></span> Atendendo toda a Região dos Lagos</p>
-          <h1>Sua marca contada em <em>stories</em> que as pessoas param pra ver.</h1>
+          <h1 class="split">Sua marca contada em <em>conteúdo</em> que as pessoas param pra ver.</h1>
           <p class="lead">Eu vou até o seu negócio, capto bastidores, produtos e momentos reais, e entrego conteúdo pronto pra postar no mesmo dia. Sem roteiro engessado, com a cara da sua marca.</p>
           <div class="hero__actions">
             <a class="btn btn--primary btn--lg" href="#contato">
@@ -104,7 +108,7 @@
       <div class="container value__grid">
         <div>
           <p class="kicker">Por que ter uma storymaker</p>
-          <h2>Quem aparece todo dia é lembrado. <em>Quem some, é esquecido.</em></h2>
+          <h2 class="scrub">Quem aparece todo dia é lembrado. <em>Quem some, é esquecido.</em></h2>
         </div>
         <div class="value__list">
           <article>
@@ -256,7 +260,7 @@
     <section class="section about" id="sobre">
       <div class="container about__grid">
         <div class="about__photos">
-          <img class="about__main" src="assets/img/izadora-estudio.webp" alt="Izadora Souza sentada em seu estúdio, com câmera e notebook na mesa" width="1000" height="1333" loading="lazy" />
+          <img class="about__main" data-parallax="-30" src="assets/img/izadora-estudio.webp" alt="Izadora Souza sentada em seu estúdio, com câmera e notebook na mesa" width="1000" height="1333" loading="lazy" />
           <img class="about__small" src="assets/img/izadora-sorriso.webp" alt="Retrato de Izadora Souza sorrindo" width="1000" height="1250" loading="lazy" />
         </div>
         <div class="about__copy">
@@ -358,7 +362,7 @@
   <footer class="footer">
     <div class="container footer__inner">
       <div>
-        <p class="footer__brand">Izadora Souza</p>
+        <div class="brand brand--footer"><img src="assets/logo/logo-offwhite.png" alt="Logo Izadora, storymaker" width="555" height="383" loading="lazy" /></div>
         <p class="footer__tag">Storymaker · Região dos Lagos, RJ</p>
       </div>
       <ul class="footer__links">

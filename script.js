@@ -95,3 +95,79 @@ if ("IntersectionObserver" in window) {
 }
 
 document.getElementById("ano").textContent = new Date().getFullYear();
+
+// =========================================================
+// Animações
+// =========================================================
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// Quebra texto em palavras (.w), mantendo <em> e outros elementos
+let wordIndex = 0;
+const splitWords = (node) => {
+  [...node.childNodes].forEach((child) => {
+    if (child.nodeType === Node.TEXT_NODE) {
+      const frag = document.createDocumentFragment();
+      child.textContent.split(/(\s+)/).forEach((part) => {
+        if (!part) return;
+        if (/^\s+$/.test(part)) {
+          frag.appendChild(document.createTextNode(part));
+        } else {
+          const s = document.createElement("span");
+          s.className = "w";
+          s.textContent = part;
+          s.style.setProperty("--i", wordIndex++);
+          frag.appendChild(s);
+        }
+      });
+      child.replaceWith(frag);
+    } else if (child.nodeType === Node.ELEMENT_NODE) {
+      splitWords(child);
+    }
+  });
+};
+document.querySelectorAll(".split, .scrub").forEach((el) => {
+  wordIndex = 0;
+  splitWords(el);
+});
+
+// Scroll: palavras do título de valor acendem conforme a seção passa
+const scrub = document.querySelector(".scrub");
+const scrubWords = scrub ? [...scrub.querySelectorAll(".w")] : [];
+const updateScrub = () => {
+  if (!scrub) return;
+  const r = scrub.getBoundingClientRect();
+  const total = r.height + window.innerHeight * 0.6;
+  const p = Math.min(1, Math.max(0, (window.innerHeight * 0.8 - r.top) / total));
+  const lit = Math.round(p * scrubWords.length);
+  scrubWords.forEach((w, i) => w.classList.toggle("on", i < lit));
+};
+
+// Parallax leve nas fotos da seção sobre e spotlight do hero
+const parallaxEls = [...document.querySelectorAll("[data-parallax]")];
+const hero = document.querySelector(".hero");
+const onFrame = () => {
+  updateScrub();
+  if (!reduceMotion) {
+    parallaxEls.forEach((el) => {
+      const r = el.parentElement.getBoundingClientRect();
+      const center = (r.top + r.height / 2 - window.innerHeight / 2) / window.innerHeight;
+      el.style.setProperty("--py", `${(center * Number(el.dataset.parallax)).toFixed(1)}px`);
+    });
+  }
+};
+let ticking = false;
+window.addEventListener("scroll", () => {
+  if (!ticking) {
+    requestAnimationFrame(() => { onFrame(); ticking = false; });
+    ticking = true;
+  }
+}, { passive: true });
+onFrame();
+
+if (hero && !reduceMotion && window.matchMedia("(pointer: fine)").matches) {
+  hero.addEventListener("pointermove", (e) => {
+    const r = hero.getBoundingClientRect();
+    hero.style.setProperty("--mx", `${e.clientX - r.left}px`);
+    hero.style.setProperty("--my", `${e.clientY - r.top}px`);
+  });
+}

@@ -3,20 +3,21 @@
    Paleta "Golden Hour": espresso + caramelo + areia
    ========================================================= */
 :root {
-  /* Paleta */
-  --ink: #140f0d;        /* fundo escuro, estúdio */
-  --espresso: #1f1714;   /* superfícies escuras */
-  --cocoa: #3b2a21;      /* bordas e detalhes escuros */
-  --caramel: #c8844c;    /* cor principal (luz de cabelo / golden hour) */
-  --honey: #e6ae72;      /* destaque claro */
-  --sand: #ead9c3;       /* terno bege */
-  --cream: #f7f0e6;      /* fundo claro */
-  --paper: #fbf7f1;      /* cartões claros */
-  --sea: #2f6f6a;        /* toque de laguna, Região dos Lagos */
-  --text: #241a15;
-  --text-soft: #6e5e53;
-  --text-on-dark: #f4ebdf;
-  --text-on-dark-soft: #b9a898;
+  /* Paleta (extraída da logo): vinho + cobre + off-white */
+  --ink: #2b0b0e;        /* vinho escuro: fundos de destaque */
+  --espresso: #3a1216;   /* superfícies escuras */
+  --cocoa: #5a2a2f;      /* bordas e detalhes escuros */
+  --wine: #530f14;       /* vinho da logo */
+  --caramel: #b8673f;    /* cobre da logo (seta e fio) */
+  --honey: #e09a6e;      /* destaque claro sobre o escuro */
+  --sand: #ecebe8;       /* cinza-off-white, sem bege */
+  --cream: #faf8f5;      /* off-white principal */
+  --paper: #f4f2ef;      /* off-white de cartões */
+  --sea: #2f6f6a;
+  --text: #2b0b0e;
+  --text-soft: #6e5a5d;
+  --text-on-dark: #faf8f5;
+  --text-on-dark-soft: #cbb8ba;
 
   --radius: 22px;
   --radius-sm: 14px;
@@ -87,12 +88,11 @@ svg .fill { fill: currentColor; stroke: none; }
 
 /* ---------- NAV ---------- */
 .nav { position: fixed; inset: 0 0 auto; z-index: 50; transition: background .3s ease, backdrop-filter .3s ease, box-shadow .3s ease; }
-.nav.is-scrolled, .nav.is-open { background: rgba(20, 15, 13, .82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 1px 0 rgba(244, 235, 223, .06); }
+.nav.is-scrolled, .nav.is-open { background: rgba(43, 11, 14, .82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 1px 0 rgba(244, 235, 223, .06); }
 .nav__inner { display: flex; align-items: center; gap: 24px; height: 72px; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text-on-dark); margin-right: auto; }
-.brand__mark { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; background: var(--caramel); color: var(--ink); font-size: 22px; }
-.brand__name { font-family: var(--serif); font-size: 19px; line-height: 1; display: flex; flex-direction: column; }
-.brand__name small { font-family: var(--sans); font-size: 10.5px; text-transform: uppercase; letter-spacing: .22em; color: var(--honey); margin-top: 4px; }
+.brand img { height: 46px; width: auto; }
+.brand--footer img { height: 84px; }
 .nav__links { display: none; gap: 30px; }
 .nav__links a { color: var(--text-on-dark-soft); text-decoration: none; font-size: 15px; font-weight: 500; transition: color .2s; }
 .nav__links a:hover { color: var(--honey); }
@@ -308,3 +308,86 @@ details p { padding: 0 0 22px; color: var(--text-soft); }
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* =========================================================
+   Animações e fundos (inspiração: showcases de motion design)
+   ========================================================= */
+
+/* Grão sutil em toda a página */
+body::before {
+  content: ""; position: fixed; inset: -50%; z-index: 999; pointer-events: none; opacity: .045;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 1.2s steps(6) infinite;
+}
+@keyframes grain { 0% { transform: translate(0,0); } 20% { transform: translate(-3%,2%); } 40% { transform: translate(2%,-3%); } 60% { transform: translate(-2%,3%); } 80% { transform: translate(3%,1%); } 100% { transform: translate(0,0); } }
+
+/* Hero: blobs que flutuam */
+.hero__glow { background: none; overflow: hidden; }
+.blob { position: absolute; border-radius: 50%; filter: blur(70px); opacity: .55; will-change: transform; }
+.blob--a { width: 46vw; height: 46vw; max-width: 560px; max-height: 560px; background: var(--caramel); top: -10%; right: -8%; animation: drift1 16s ease-in-out infinite; }
+.blob--b { width: 40vw; height: 40vw; max-width: 480px; max-height: 480px; background: var(--wine); bottom: -18%; left: -10%; opacity: .9; animation: drift2 20s ease-in-out infinite; }
+.blob--c { width: 22vw; height: 22vw; max-width: 260px; max-height: 260px; background: var(--honey); top: 40%; left: 42%; opacity: .25; animation: drift3 14s ease-in-out infinite; }
+@keyframes drift1 { 50% { transform: translate(-6%, 10%) scale(1.08); } }
+@keyframes drift2 { 50% { transform: translate(8%, -8%) scale(1.12); } }
+@keyframes drift3 { 50% { transform: translate(-30px, 20px) scale(.9); } }
+
+/* Hero: linhas de grade que se movem */
+.hero__grid-lines { position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .5;
+  background-image: linear-gradient(rgba(250, 248, 245, .05) 1px, transparent 1px), linear-gradient(90deg, rgba(250, 248, 245, .05) 1px, transparent 1px);
+  background-size: 64px 64px; mask-image: radial-gradient(ellipse at 70% 40%, #000 20%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at 70% 40%, #000 20%, transparent 70%);
+  animation: grid 22s linear infinite; }
+@keyframes grid { to { background-position: 64px 64px; } }
+
+/* Hero: spotlight que segue o cursor (variáveis --mx/--my vêm do script) */
+.hero::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(420px circle at var(--mx, 75%) var(--my, 30%), rgba(184, 103, 63, .22), transparent 70%);
+  transition: background-position .2s; }
+
+/* Ícones flutuantes */
+.float { position: absolute; z-index: 1; width: 56px; height: 56px; border-radius: 16px; border: 1px solid rgba(250, 248, 245, .18); display: grid; place-items: center; color: var(--honey); background: rgba(250, 248, 245, .04); backdrop-filter: blur(6px); pointer-events: none; }
+.float svg { width: 22px; height: 22px; fill: currentColor; stroke: none; }
+.float--1 { top: 22%; left: 6%; animation: bob 7s ease-in-out infinite; }
+.float--2 { bottom: 12%; right: 8%; animation: bob 9s ease-in-out infinite reverse; }
+.float--2 svg { fill: none; stroke: currentColor; stroke-width: 1.6; }
+@keyframes bob { 50% { transform: translateY(-16px) rotate(6deg); } }
+
+/* Hero: título palavra por palavra */
+.split .w { display: inline-block; opacity: 0; transform: translateY(.35em); filter: blur(6px); animation: wordIn .9s cubic-bezier(.2, .7, .2, 1) forwards; animation-delay: calc(var(--i) * 70ms + 150ms); }
+.split em .w { color: var(--caramel); }
+@keyframes wordIn { to { opacity: 1; transform: none; filter: none; } }
+
+/* Seção de valor: palavras acendem com o scroll */
+.scrub .w { opacity: .22; transition: opacity .35s ease; }
+.scrub .w.on { opacity: 1; }
+
+/* Marquee mais dinâmico: cada item com ícone */
+.marquee li { font-style: italic; }
+
+/* Processo: fundo com blob animado */
+.process { position: relative; overflow: hidden; isolation: isolate; }
+.process::before { content: ""; position: absolute; width: 60vw; height: 60vw; max-width: 640px; max-height: 640px; right: -20%; top: -20%; border-radius: 50%; background: radial-gradient(circle, rgba(184, 103, 63, .35), transparent 65%); z-index: -1; animation: drift1 18s ease-in-out infinite; }
+.process .container { position: relative; }
+
+/* Sobre: foto com parallax (--py vem do script) */
+.about__main, .about__small { transform: translate3d(0, var(--py, 0px), 0); will-change: transform; }
+.about__small { transform: translate3d(0, calc(var(--py, 0px) * -.5), 0); }
+
+/* CTA: anel animado atrás do card */
+.cta__card::after { content: ""; position: absolute; width: 320px; height: 320px; right: -110px; bottom: -130px; border-radius: 50%; border: 1px solid rgba(184, 103, 63, .45); box-shadow: 0 0 0 40px rgba(184, 103, 63, .06), 0 0 0 80px rgba(184, 103, 63, .03); z-index: -1; animation: spin 26s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Botão primário com brilho passando */
+.btn--primary { position: relative; overflow: hidden; }
+.btn--primary::after { content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%; background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .45), transparent); transform: skewX(-20deg); animation: sheen 3.6s ease-in-out infinite; }
+@keyframes sheen { 0%, 60% { left: -60%; } 100% { left: 140%; } }
+
+@media (prefers-reduced-motion: reduce) {
+  body::before, .blob, .hero__grid-lines, .float, .split .w, .process::before, .cta__card::after, .btn--primary::after { animation: none !important; }
+  .split .w { opacity: 1; transform: none; filter: none; }
+  .scrub .w { opacity: 1; }
+}
+
+/* Ajustes finais de responsividade */
+@media (max-width: 759px) { .float { display: none; } }
+@media (min-width: 960px) { .brand img { height: 60px; } }
