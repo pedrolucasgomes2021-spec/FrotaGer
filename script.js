@@ -216,3 +216,34 @@ if (!CSS.supports("animation-timeline: scroll()")) {
   window.addEventListener("scroll", upd, { passive: true });
   upd();
 }
+
+// =========================================================
+// Clientes Fundadores: vagas e contagem regressiva
+// Atualize CONFIG_FUNDADORES.restantes a cada fechamento.
+// =========================================================
+const CONFIG_FUNDADORES = { total: 5, restantes: 5 };
+const founders = document.getElementById("fundadores");
+if (founders) {
+  const deadline = new Date(founders.dataset.deadline).getTime();
+  const chip = document.querySelector(".founders-chip");
+  const { total, restantes } = CONFIG_FUNDADORES;
+  founders.querySelector("[data-vagas]").textContent = restantes;
+  founders.querySelector("[data-vagas-total]").textContent = total;
+  const dots = founders.querySelector(".founders__dots");
+  for (let i = 0; i < total; i++) {
+    const d = document.createElement("i");
+    if (i < restantes) d.className = "on";
+    dots.appendChild(d);
+  }
+  const end = () => { founders.classList.add("is-ended"); if (chip) chip.remove(); };
+  const pad = (n) => String(n).padStart(2, "0");
+  const tickCd = () => {
+    const left = deadline - Date.now();
+    if (left <= 0 || restantes <= 0) { end(); return false; }
+    founders.querySelector('[data-cd="d"]').textContent = pad(Math.floor(left / 864e5));
+    founders.querySelector('[data-cd="h"]').textContent = pad(Math.floor(left / 36e5) % 24);
+    founders.querySelector('[data-cd="m"]').textContent = pad(Math.floor(left / 6e4) % 60);
+    return true;
+  };
+  if (tickCd()) setInterval(tickCd, 30000);
+}
