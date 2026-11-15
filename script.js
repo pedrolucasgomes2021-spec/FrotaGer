@@ -3,7 +3,7 @@
 // =========================================================
 const CONFIG = {
   whatsapp: "5522999999999", // DDI + DDD + número, só dígitos (placeholder)
-  instagram: "https://instagram.com/", // link do perfil (placeholder)
+  instagram: "https://www.instagram.com/izadorrasalomao/",
 };
 
 const waLink = (msg) =>
