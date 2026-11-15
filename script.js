@@ -227,14 +227,6 @@ if (founders) {
   const deadline = new Date(founders.dataset.deadline).getTime();
   const chip = document.querySelector(".founders-chip");
   const { total, restantes } = CONFIG_FUNDADORES;
-  founders.querySelector("[data-vagas]").textContent = restantes;
-  founders.querySelector("[data-vagas-total]").textContent = total;
-  const dots = founders.querySelector(".founders__dots");
-  for (let i = 0; i < total; i++) {
-    const d = document.createElement("i");
-    if (i < restantes) d.className = "on";
-    dots.appendChild(d);
-  }
   const end = () => { founders.classList.add("is-ended"); if (chip) chip.remove(); };
   const pad = (n) => String(n).padStart(2, "0");
   const tickCd = () => {

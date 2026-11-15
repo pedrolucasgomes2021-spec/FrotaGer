@@ -531,3 +531,4 @@ body::before {
 }
 @media (prefers-reduced-motion: reduce) { .founders__card::before { animation: none; } }
 .founders-chip .rec { background: var(--honey); box-shadow: 0 0 0 4px rgba(224, 154, 110, .2); }
+.founders__scarce { font-family: var(--serif); font-size: 26px; line-height: 1.2; color: var(--honey); margin: 4px 0 0; }
