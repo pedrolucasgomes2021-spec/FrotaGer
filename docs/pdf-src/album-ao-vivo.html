@@ -2,39 +2,50 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8" />
-<title>Álbum ao Vivo · Plano de Produto</title>
+<title>Álbum ao Vivo · Izadora Storymaker</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="brand.css" />
 <style>
-  .page { padding: 22mm 20mm 24mm; }
-  .page h2 { font-size: 30pt; margin-bottom: 5mm; }
-  .lead { font-size: 12.5pt; margin-bottom: 9mm; }
-  .steps4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm; margin: 6mm 0 8mm; }
-  .steps4 div { border-top: 2px solid var(--copper); padding-top: 4mm; }
-  .steps4 b { display: block; font-family: "Fraunces", serif; font-weight: 400; font-size: 22pt; color: var(--copper); line-height: 1; margin-bottom: 2.5mm; }
-  .steps4 p { font-size: 10pt; margin: 0; }
-  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10mm; align-items: center; }
-  .big-quote { font-family: "Fraunces", serif; font-size: 20pt; line-height: 1.25; color: var(--ink); margin: 0 0 4mm; }
-  .big-quote em { color: var(--copper); }
+  .page { padding: 24mm 22mm 26mm; display: flex; flex-direction: column; }
+  .page h2 { font-size: 32pt; margin-bottom: 5mm; }
+  .lead { font-size: 13pt; margin-bottom: 10mm; max-width: 140mm; }
+  .center { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .phone { width: 66mm; }
+  .hero2 { display: grid; grid-template-columns: 1fr 70mm; gap: 12mm; align-items: center; }
   .bullets { list-style: none; padding: 0; margin: 0; }
-  .bullets li { padding: 3mm 0; border-bottom: 1px solid var(--line); font-size: 10.5pt; }
+  .bullets li { display: flex; gap: 4mm; align-items: baseline; padding: 4.5mm 0; border-bottom: 1px solid var(--line); font-size: 12pt; }
   .bullets li:first-child { border-top: 1px solid var(--line); }
-  .bullets b { color: var(--wine); }
-  .phone { width: 62mm; }
-  .phone-wrap { display: flex; justify-content: center; }
-  .pricing td, .pricing th { font-size: 10pt; padding: 3.5mm 4mm; }
-  .note-box { background: var(--ink); color: var(--off); border-radius: 4mm; padding: 6mm 7mm; margin-top: 7mm; }
-  .note-box h3 { color: var(--off); margin: 0 0 2mm; font-size: 16pt; }
-  .note-box h3 em { color: var(--honey); }
-  .note-box p { color: #e6d8d9; margin: 0; font-size: 10.5pt; }
-  .phase { display: grid; grid-template-columns: 34mm 1fr; gap: 4mm; padding: 4mm 0; border-bottom: 1px solid var(--line); }
+  .bullets li span { font-family: "Fraunces", serif; color: var(--copper); font-size: 14pt; min-width: 7mm; }
+  .steps2x2 { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+  .steps2x2 .card { padding: 8mm 7mm; min-height: 52mm; }
+  .steps2x2 .card b { display: block; font-family: "Fraunces", serif; font-weight: 400; font-size: 34pt; line-height: 1; color: var(--copper); margin-bottom: 4mm; }
+  .steps2x2 .card h3 { margin: 0 0 2mm; font-size: 15pt; }
+  .steps2x2 .card p { font-size: 11pt; color: var(--soft); margin: 0; }
+  .stats3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; margin: 8mm 0; }
+  .stats3 .card { text-align: center; padding: 7mm 4mm; }
+  .stats3 .num { display: block; font-size: 30pt; margin-bottom: 2mm; }
+  .stats3 span { font-size: 9.5pt; color: var(--soft); }
+  .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; margin-bottom: 9mm; }
+  .tiers .card { padding: 7mm 5.5mm; display: flex; flex-direction: column; gap: 2mm; }
+  .tiers .card h3 { margin: 0; font-size: 17pt; }
+  .tiers .card p { font-size: 10pt; margin: 0; }
+  .tiers .card.dark .tag { align-self: flex-start; }
+  .tiers .price-line { margin-top: auto; padding-top: 4mm; border-top: 1px solid var(--line); font-family: "Fraunces", serif; color: var(--copper); font-size: 13pt; }
+  .tiers .card.dark .price-line { border-color: rgba(250,248,245,.15); color: var(--honey); }
+  .closing { background: var(--ink); color: var(--off); border-radius: 5mm; padding: 9mm; position: relative; overflow: hidden; }
+  .closing::after { content: ""; position: absolute; right: -25mm; top: -25mm; width: 80mm; height: 80mm; border-radius: 50%; background: radial-gradient(circle, rgba(184,103,63,.5), transparent 65%); }
+  .closing > * { position: relative; z-index: 1; }
+  .closing h3 { color: var(--off); font-size: 20pt; margin: 0 0 2mm; }
+  .closing h3 em { color: var(--honey); }
+  .closing p { color: #e6d8d9; margin: 0; font-size: 11.5pt; }
+  .phase { display: grid; grid-template-columns: 30mm 1fr; gap: 5mm; padding: 5mm 0; border-bottom: 1px solid var(--line); }
   .phase:first-of-type { border-top: 1px solid var(--line); }
-  .phase .when { font-family: "Fraunces", serif; font-size: 15pt; color: var(--copper); line-height: 1.1; }
-  .phase h3 { font-size: 13pt; margin: 0 0 1mm; }
-  .phase p { font-size: 10pt; margin: 0; color: var(--soft); }
-  .check-small { list-style: none; padding: 0; margin: 0; }
-  .check-small li { position: relative; padding-left: 6mm; margin-bottom: 2.5mm; font-size: 10.5pt; }
-  .check-small li::before { content: ""; position: absolute; left: 0; top: 1.2mm; width: 3.2mm; height: 3.2mm; border: 1.4px solid var(--copper); border-radius: 1mm; }
+  .phase .when { font-family: "Fraunces", serif; font-size: 17pt; color: var(--copper); line-height: 1.1; }
+  .phase h3 { font-size: 14pt; margin: 0 0 1mm; }
+  .phase p { font-size: 10.5pt; margin: 0; color: var(--soft); }
+  .priv { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; }
+  .priv div { border-top: 2px solid var(--copper); padding-top: 3.5mm; font-size: 10.5pt; }
+  .priv b { display: block; font-family: "Fraunces", serif; font-weight: 400; font-size: 13pt; margin-bottom: 1.5mm; }
 </style>
 </head>
 <body>
@@ -43,41 +54,39 @@
 <section class="page cover">
   <img class="logo" src="../../assets/logo/logo-offwhite.png" alt="Logo" />
   <div>
-    <p class="kicker" style="color: var(--honey)">Plano de produto</p>
+    <p class="kicker" style="color: var(--honey)">Exclusivo na Cobertura de Eventos</p>
     <h1>Álbum <em>ao Vivo</em></h1>
-    <p class="sub">Os convidados veem as fotos da festa enquanto ela acontece.</p>
+    <p class="sub">Você vive a festa. E vê a festa ao mesmo tempo.</p>
   </div>
   <div class="meta">
     <div><b>QR code</b>acesso em um toque</div>
-    <div><b>Minutos</b>fotos editadas no ar</div>
-    <div><b>Incluso</b>na Cobertura de Eventos</div>
+    <div><b>Em minutos</b>fotos editadas no ar</div>
+    <div><b>Sem app</b>abre no navegador</div>
   </div>
 </section>
 
-<!-- 2 · PROBLEMA E IDEIA -->
+<!-- 2 · A IDEIA -->
 <section class="page">
-  <p class="kicker">O problema</p>
-  <h2>Fotos que demoram <em>semanas</em> perdem a graça</h2>
-  <p class="lead">Na hora da festa, o convidado quer postar agora. Quando a foto chega, o assunto já passou.</p>
-
-  <div class="two">
-    <div>
-      <p class="kicker">A ideia</p>
-      <p class="big-quote">Um álbum que <em>cresce durante a festa.</em></p>
+  <p class="kicker">A ideia</p>
+  <h2>Um álbum que <em>cresce durante a festa</em></h2>
+  <p class="lead">Ninguém precisa esperar semanas pelas fotos. Elas chegam enquanto o evento acontece, prontas para postar.</p>
+  <div class="center">
+    <div class="hero2">
       <ul class="bullets">
-        <li>Convidado escaneia um QR code, sem baixar aplicativo</li>
-        <li>As fotos aparecem em minutos, já editadas</li>
-        <li>Dá para baixar e postar nos stories na hora</li>
+        <li><span>01</span>O convidado escaneia um QR code na mesa</li>
+        <li><span>02</span>As fotos aparecem em minutos, já editadas</li>
+        <li><span>03</span>Baixa e posta nos stories na hora</li>
+        <li><span>04</span>O álbum completo chega depois, como sempre</li>
       </ul>
-    </div>
-    <div class="phone-wrap">
       <div class="phone"><div class="screen">
         <div class="bar"><span class="live">AO VIVO</span><b>Casamento Ana &amp; Leo</b>128 fotos · atualizado agora</div>
         <div class="grid">
-          <div style="background-image:url(../../assets/img/izadora-mesa.webp)"></div>
-          <div style="background-image:url(../../assets/img/izadora-sorriso.webp)"></div>
-          <div style="background-image:url(../../assets/img/izadora-headshot.webp)"></div>
-          <div style="background-image:url(../../assets/img/izadora-estudio.webp)"></div>
+          <div class="tile t1"><svg viewBox="0 0 24 24"><path d="M8 3h8l-1 7a3 3 0 0 1-6 0zM12 13v7M8 20h8"/></svg></div>
+          <div class="tile t2"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></div>
+          <div class="tile t3"><svg viewBox="0 0 24 24"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg></div>
+          <div class="tile t4"><svg viewBox="0 0 24 24"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z"/></svg></div>
+          <div class="tile t5"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="3"/><circle cx="12" cy="13.5" r="3.5"/><path d="M8 7l2-3h4l2 3"/></svg></div>
+          <div class="tile t6"><svg viewBox="0 0 24 24"><path d="M4 20h16v-7H4zM4 15c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 4 0M12 13V9"/></svg></div>
         </div>
         <div class="cta">Baixar · Compartilhar</div>
       </div></div>
@@ -86,90 +95,76 @@
   <div class="footer"><img src="../../assets/logo/logo-wine.png" alt="" /><span>Álbum ao Vivo</span><span>02</span></div>
 </section>
 
-<!-- 3 · COMO FUNCIONA -->
+<!-- 3 · PARA QUEM -->
 <section class="page">
-  <p class="kicker">Como funciona</p>
-  <h2>Quatro passos, <em>sem fricção</em></h2>
-  <p class="lead">Do QR code à foto no story em menos de um minuto.</p>
-
-  <div class="steps4">
-    <div><b>1</b><p>Escaneia o QR code na mesa ou no telão</p></div>
-    <div><b>2</b><p>Abre o álbum no navegador</p></div>
-    <div><b>3</b><p>Vê as fotos chegando, em ordem</p></div>
-    <div><b>4</b><p>Baixa ou compartilha</p></div>
+  <p class="kicker">Por que importa</p>
+  <h2>Bom para <em>todo mundo</em> da festa</h2>
+  <p class="lead">A demora das fotos é a reclamação mais comum depois de um evento. O Álbum ao Vivo resolve isso na hora.</p>
+  <div class="center">
+    <div class="steps2x2">
+      <div class="card"><b>✦</b><h3>Convidados</h3><p>Postam fotos bonitas na mesma noite, em vez de selfies tremidas.</p></div>
+      <div class="card"><b>✦</b><h3>Anfitriões</h3><p>Veem a festa render nas redes enquanto o assunto ainda está quente.</p></div>
+      <div class="card"><b>✦</b><h3>Cerimonialistas</h3><p>Entregam uma experiência que ninguém mais oferece na região.</p></div>
+      <div class="card dark"><b style="color:var(--honey)">✦</b><h3 style="color:var(--off)">Izadora</h3><p style="color:#e6d8d9">Cada foto compartilhada leva o @ dela. Cada convidado vira um futuro cliente.</p></div>
+    </div>
   </div>
-
-  <p class="kicker" style="margin-top:4mm">Versão inicial</p>
-  <ul class="bullets">
-    <li><b>Atualização ao vivo</b> com fotos novas no topo</li>
-    <li><b>Acesso privado</b> por link e código de 4 dígitos</li>
-    <li><b>Download</b> em boa qualidade e compartilhamento nos stories</li>
-  </ul>
-  <p class="note" style="margin-top:6mm">Depois: telão opcional, favoritos do anfitrião e recados dos convidados.</p>
   <div class="footer"><img src="../../assets/logo/logo-wine.png" alt="" /><span>Álbum ao Vivo</span><span>03</span></div>
 </section>
 
-<!-- 4 · OPERAÇÃO -->
+<!-- 4 · BASTIDORES -->
 <section class="page">
-  <p class="kicker">Operação</p>
+  <p class="kicker">Bastidores</p>
   <h2>Quem fotografa <em>não edita</em></h2>
-  <p class="lead">A captação não para. Um editor dedicado alimenta o álbum em lotes.</p>
-
-  <div class="grid2" style="margin-bottom: 8mm">
-    <div class="card"><span class="tag">Função 1</span><h3>Captação</h3><p>A Izadora fotografa e grava os stories.</p></div>
-    <div class="card"><span class="tag">Função 2</span><h3>Editor</h3><p>Seleciona, aplica o padrão da marca e publica em lotes.</p></div>
-  </div>
-
-  <p class="kicker">Metas de serviço</p>
-  <table>
-    <tr><th>Indicador</th><th>Meta</th></tr>
-    <tr><td><b>Primeiras fotos no ar</b></td><td>até 20 minutos após o início</td></tr>
-    <tr><td><b>Novo lote</b></td><td>a cada 15 a 20 minutos</td></tr>
-    <tr><td><b>Álbum completo</b></td><td>em até ___ dias após o evento</td></tr>
-  </table>
-
-  <div class="note-box">
-    <h3>Regra de ouro: <em>curadoria</em></h3>
-    <p>Só entram fotos boas. Velocidade sem curadoria queima a marca.</p>
+  <p class="lead">A Izadora não para de captar. Um editor dedicado seleciona, aplica o padrão da marca e publica as fotos em lotes.</p>
+  <div class="center">
+    <div class="stats3">
+      <div class="card"><span class="num">20 min</span><span>até as primeiras fotos no ar</span></div>
+      <div class="card"><span class="num">15 min</span><span>entre um lote e outro</span></div>
+      <div class="card"><span class="num">100%</span><span>das fotos com curadoria</span></div>
+    </div>
+    <div class="closing">
+      <h3>Regra de ouro: <em>curadoria</em></h3>
+      <p>Só entram fotos boas: olhos abertos, luz bonita, ninguém em momento constrangedor. O álbum completo, com todas as fotos tratadas, vem depois.</p>
+    </div>
   </div>
   <div class="footer"><img src="../../assets/logo/logo-wine.png" alt="" /><span>Álbum ao Vivo</span><span>04</span></div>
 </section>
 
-<!-- 5 · PREÇO, PRIVACIDADE, PRÓXIMOS PASSOS -->
+<!-- 5 · NÍVEIS -->
 <section class="page">
-  <p class="kicker">Oferta</p>
-  <h2>Incluso na <em>cobertura</em></h2>
-  <table class="pricing">
-    <tr><th>Nível</th><th>Inclui</th><th style="width:30%">Valor</th></tr>
-    <tr><td><b>Essencial</b></td><td>Stories ao vivo, reels e fotos depois</td><td>R$ ____</td></tr>
-    <tr><td><b>Ao Vivo</b> <span class="tag">principal</span></td><td>Tudo do Essencial + <b>Álbum ao Vivo</b></td><td>R$ ____</td></tr>
-    <tr><td><b>Premium</b></td><td>Tudo do Ao Vivo + telão e segundo fotógrafo</td><td>R$ ____</td></tr>
-  </table>
-
-  <p class="kicker" style="margin-top:6mm">Privacidade</p>
-  <ul class="check-small">
-    <li>Álbum privado, acessado só por link e código</li>
-    <li>Autorização do anfitrião no contrato, com o que não pode aparecer</li>
-    <li>Remoção de qualquer foto a pedido, na hora</li>
-  </ul>
-  <p class="note">Modelo de contrato e placa de aviso devem ser validados por um advogado.</p>
+  <p class="kicker">Parte da Cobertura de Eventos</p>
+  <h2>Três níveis de <em>cobertura</em></h2>
+  <p class="lead">O Álbum ao Vivo não é vendido sozinho. Ele é o diferencial da Cobertura de Eventos da Izadora.</p>
+  <div class="center">
+    <div class="tiers">
+      <div class="card"><h3>Essencial</h3><p>Stories ao vivo durante o evento</p><p>Reels de melhores momentos</p><p>Fotos entregues depois</p><div class="price-line">R$ ____</div></div>
+      <div class="card dark"><span class="tag">Recomendado</span><h3 style="color:var(--off)">Ao Vivo</h3><p>Tudo do Essencial</p><p><b style="color:var(--honey)">+ Álbum ao Vivo</b></p><p>Editor dedicado e QR codes nas mesas</p><div class="price-line">R$ ____</div></div>
+      <div class="card"><h3>Premium</h3><p>Tudo do Ao Vivo</p><p>+ Telão com as fotos em tempo real</p><p>+ Segundo fotógrafo</p><div class="price-line">R$ ____</div></div>
+    </div>
+    <p class="kicker">Privacidade</p>
+    <div class="priv">
+      <div><b>Álbum privado</b>Acesso só por link e código do evento.</div>
+      <div><b>Combinado</b>O anfitrião autoriza e define o que não aparece.</div>
+      <div><b>Remoção</b>Qualquer foto sai na hora, a pedido.</div>
+    </div>
+  </div>
   <div class="footer"><img src="../../assets/logo/logo-wine.png" alt="" /><span>Álbum ao Vivo</span><span>05</span></div>
 </section>
 
 <!-- 6 · LANÇAMENTO -->
 <section class="page">
-  <p class="kicker">Lançamento</p>
+  <p class="kicker">Lançamento em 2027</p>
   <h2>Do piloto ao <em>produto oficial</em></h2>
-  <p class="lead">Validar com poucos eventos antes de vender em escala.</p>
-
-  <div class="phase"><div class="when">Jan</div><div><h3>Piloto</h3><p>Dois eventos com condição especial, em troca de depoimento e autorização de portfólio.</p></div></div>
-  <div class="phase"><div class="when">Fev</div><div><h3>Carnaval</h3><p>Coberturas de festas e camarotes, para provar a escala.</p></div></div>
-  <div class="phase"><div class="when">Mar</div><div><h3>Lançamento oficial</h3><p>Página no site e apresentação para cerimonialistas e casas de festa.</p></div></div>
-  <div class="phase"><div class="when">Abr–Jun</div><div><h3>Plataforma própria</h3><p>O álbum passa a viver dentro do site da Izadora, com a marca dela.</p></div></div>
-
-  <div class="note-box" style="margin-top:9mm">
-    <h3>Resultado esperado: <em>cada festa vira vitrine</em></h3>
-    <p>Quem vê o álbum pede o mesmo para o próprio evento.</p>
+  <p class="lead">Começar pequeno, provar o encanto e então vender em escala.</p>
+  <div class="center">
+    <div class="phase"><div class="when">Janeiro</div><div><h3>Piloto</h3><p>Dois eventos com condição especial, em troca de depoimento e autorização de portfólio.</p></div></div>
+    <div class="phase"><div class="when">Fevereiro</div><div><h3>Carnaval</h3><p>Coberturas de festas e camarotes para provar a operação em escala.</p></div></div>
+    <div class="phase"><div class="when">Março</div><div><h3>Lançamento oficial</h3><p>Página no site e apresentação para cerimonialistas e casas de festa.</p></div></div>
+    <div class="phase"><div class="when">Até junho</div><div><h3>Plataforma própria</h3><p>O álbum passa a viver dentro do site da Izadora, com a marca dela.</p></div></div>
+    <div class="closing" style="margin-top:10mm">
+      <h3>Cada festa vira <em>vitrine</em></h3>
+      <p>Quem vê o álbum pede o mesmo para o próprio evento.</p>
+    </div>
   </div>
   <div class="footer"><img src="../../assets/logo/logo-wine.png" alt="" /><span>Álbum ao Vivo</span><span>06</span></div>
 </section>

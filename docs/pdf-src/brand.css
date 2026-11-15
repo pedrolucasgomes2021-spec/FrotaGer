@@ -113,3 +113,15 @@
   .phone .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1mm; padding: 1mm; flex: 1; }
   .phone .grid div { background-size: cover; background-position: center 20%; border-radius: 1mm; }
   .phone .cta { margin: 1.5mm; background: var(--copper); color: var(--ink); border-radius: 10mm; text-align: center; font-size: 6pt; font-weight: 800; padding: 1.8mm; }
+
+  /* ---- blocos de "foto do evento" (mockups sem fotos reais) ---- */
+  .tile { position: relative; border-radius: 1.2mm; overflow: hidden; }
+  .tile::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 30% 25%, rgba(255,255,255,.35), transparent 45%); }
+  .tile svg { position: absolute; left: 50%; top: 50%; width: 34%; height: 34%; transform: translate(-50%, -50%); fill: none; stroke: rgba(255,255,255,.75); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .t1 { background: linear-gradient(150deg, #e09a6e, #8a3a1f); }
+  .t2 { background: linear-gradient(150deg, #6b2329, #2b0b0e); }
+  .t3 { background: linear-gradient(150deg, #d9b79a, #a8693f); }
+  .t4 { background: linear-gradient(150deg, #b8673f, #530f14); }
+  .t5 { background: linear-gradient(150deg, #f1d7c2, #c58a62); }
+  .t6 { background: linear-gradient(150deg, #7a2f2a, #3a1216); }
+  .phone .grid .tile { background-size: auto; }

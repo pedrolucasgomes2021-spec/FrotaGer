@@ -7,8 +7,8 @@
 <link rel="stylesheet" href="brand.css" />
 <style>
   .cover-photo { position: absolute; inset: 0; z-index: 0; }
-  .cover-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; opacity: .55; }
-  .cover-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(43,11,14,.55) 0%, rgba(43,11,14,.2) 35%, rgba(43,11,14,.85) 70%, var(--ink) 100%); }
+  .cover-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; opacity: .5; }
+  .cover-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(43,11,14,.6) 0%, rgba(43,11,14,.25) 35%, rgba(43,11,14,.88) 70%, var(--ink) 100%); }
   .cover.photo-cover::before, .cover.photo-cover::after { display: none; }
   .prod { display: grid; grid-template-columns: 1.1fr .9fr; gap: 9mm; align-items: stretch; height: 222mm; }
   .prod .photo { height: 100%; }
@@ -17,13 +17,28 @@
   .prod .bignum { display: block; margin-bottom: 1mm; }
   .incl { margin: 4mm 0; }
   .incl li { margin-bottom: 2mm; }
+  .event-visual { height: 100%; border-radius: 4mm; background: var(--ink); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .event-visual::before { content: ""; position: absolute; width: 120mm; height: 120mm; border-radius: 50%; right: -50mm; top: -40mm; background: radial-gradient(circle, rgba(184,103,63,.5), transparent 65%); }
+  .event-visual .phone { position: relative; width: 58mm; box-shadow: 0 12mm 24mm -8mm rgba(0,0,0,.6); }
+  .event-visual .label { position: absolute; left: 6mm; bottom: 6mm; right: 6mm; color: var(--off); font-size: 9pt; text-align: center; }
+  .event-visual .label b { color: var(--honey); font-family: "Fraunces", serif; font-weight: 400; font-size: 13pt; display: block; }
+  .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; margin: 5mm 0; }
+  .tiers .card { display: flex; flex-direction: column; gap: 1.5mm; padding: 5mm; }
+  .tiers .card h3 { margin: 0 0 1mm; font-size: 15pt; }
+  .tiers .card p { margin: 0; font-size: 9.6pt; }
+  .tiers .card.dark h3 { color: var(--off); }
+  .tiers .card .for { margin-top: auto; padding-top: 3mm; border-top: 1px solid var(--line); font-size: 8.6pt; color: var(--soft); }
+  .tiers .card.dark .for { border-color: rgba(250,248,245,.15); color: #cbb8ba; }
+  .steps4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm; margin: 4mm 0 2mm; }
+  .steps4 div { border-top: 2px solid var(--copper); padding-top: 3mm; font-size: 9.6pt; }
+  .steps4 b { display: block; font-family: "Fraunces", serif; font-weight: 400; font-size: 18pt; color: var(--copper); line-height: 1; margin-bottom: 1.5mm; }
 </style>
 </head>
 <body>
 
-<!-- CAPA -->
+<!-- 1 · CAPA -->
 <section class="page cover photo-cover">
-  <div class="cover-photo"><img src="../../assets/img/izadora-mesa.webp" alt="" /></div>
+  <div class="cover-photo"><img src="../../assets/img/izadora-terno.webp" alt="" /></div>
   <img class="logo" src="../../assets/logo/logo-offwhite.png" alt="Logo" />
   <div>
     <p class="kicker" style="color: var(--honey)">Catálogo de produtos</p>
@@ -37,30 +52,32 @@
   </div>
 </section>
 
-<!-- SOBRE + COMO FUNCIONA -->
+<!-- 2 · SOBRE -->
 <section class="page">
   <div class="split-6040">
     <div>
       <p class="kicker">Prazer, Izadora</p>
       <h2>Eu transformo o <em>dia a dia</em> do seu negócio em conteúdo</h2>
-      <p>Sou storymaker na Região dos Lagos. Vou até você, de celular e câmera na mão, e capto o que faz a sua marca ser única: o sorriso da equipe, o prato saindo da cozinha, o pôr do sol da pousada, o brinde no seu evento.</p>
+      <p>Sou storymaker na Região dos Lagos. Vou até você, de celular e câmera na mão, e capto o que faz a sua marca ser única: a equipe, o prato saindo da cozinha, o pôr do sol da pousada, o brinde no seu evento.</p>
       <p>Meu conteúdo é leve, verdadeiro e bonito. Ele conversa com quem assiste e faz a pessoa querer estar ali.</p>
     </div>
     <div class="photo" style="height: 92mm"><img src="../../assets/img/izadora-headshot.webp" alt="Izadora" style="object-position: 50% 25%" /></div>
   </div>
 
-  <h3 style="margin-top:8mm">Como funciona</h3>
-  <div class="flow">
-    <div><b>1</b><p><b>Conversa:</b> você me conta sobre sua marca e o que quer mostrar.</p></div>
-    <div><b>2</b><p><b>Planejamento:</b> definimos o pacote, as datas e as cenas essenciais.</p></div>
-    <div><b>3</b><p><b>Captação:</b> vou até você e gravo tudo no formato vertical.</p></div>
-    <div><b>4</b><p><b>Entrega:</b> material editado e organizado, pronto para postar.</p></div>
+  <h3 style="margin-top:8mm">Produtos</h3>
+  <div class="grid2" style="grid-template-columns: repeat(4, 1fr); gap: 3mm">
+    <div class="card"><b>Pacote 50</b><p class="ideal">Para começar ou para uma ação pontual</p></div>
+    <div class="card"><b>Pacote 100</b><p class="ideal">Conteúdo para semanas, de uma vez</p></div>
+    <div class="card"><b>Contrato Mensal</b><p class="ideal">Presença nas redes o ano todo</p></div>
+    <div class="card dark"><b style="color:var(--honey)">Eventos</b><p class="ideal" style="color:#e6d8d9">Cobertura com Álbum ao Vivo</p></div>
   </div>
 
-  <h3>Incluso em todos os produtos</h3>
-  <div class="grid2">
-    <ul class="check"><li>Captação presencial no seu espaço</li><li>Edição com cortes, texto e trilha</li><li>Formato vertical nativo (9:16)</li></ul>
-    <ul class="check"><li>Entrega organizada em pasta online</li><li>Parte do conteúdo entregue no mesmo dia</li><li>Atendimento direto pelo WhatsApp</li></ul>
+  <h3>Como funciona</h3>
+  <div class="flow">
+    <div><b>1</b><p><b>Conversa:</b> você me conta sobre sua marca e o que quer mostrar.</p></div>
+    <div><b>2</b><p><b>Planejamento:</b> definimos o produto, as datas e as cenas essenciais.</p></div>
+    <div><b>3</b><p><b>Captação:</b> vou até você e gravo tudo no formato vertical.</p></div>
+    <div><b>4</b><p><b>Entrega:</b> material editado e organizado, pronto para postar.</p></div>
   </div>
 
   <h3>Cidades atendidas</h3>
@@ -68,7 +85,7 @@
   <div class="footer"><img src="../../assets/logo/logo-wine.png" alt="" /><span>Catálogo de Produtos</span><span>02</span></div>
 </section>
 
-<!-- PACOTE 50 -->
+<!-- 3 · PACOTE 50 -->
 <section class="page">
   <div class="prod">
     <div>
@@ -82,15 +99,15 @@
         <li>Edição com texto, trilha e cortes dinâmicos</li>
         <li>Entrega organizada em pasta online</li>
       </ul>
-      <p class="ideal"><b>Ideal para:</b> lojas com coleção nova, inaugurações, negócios que querem testar o formato.</p>
+      <p class="ideal"><b>Ideal para:</b> lojas com coleção nova, inaugurações e negócios que querem testar o formato.</p>
       <div class="price"><span>Investimento</span><b>sob consulta</b></div>
     </div>
-    <div class="photo"><img src="../../assets/img/izadora-sorriso.webp" alt="" /></div>
+    <div class="photo"><img src="../../assets/img/izadora-mesa.webp" alt="" /></div>
   </div>
   <div class="footer"><img src="../../assets/logo/logo-wine.png" alt="" /><span>Catálogo de Produtos</span><span>03</span></div>
 </section>
 
-<!-- PACOTE 100 -->
+<!-- 4 · PACOTE 100 -->
 <section class="page">
   <div class="prod">
     <div class="photo"><img src="../../assets/img/izadora-estudio.webp" alt="" /></div>
@@ -112,7 +129,7 @@
   <div class="footer"><img src="../../assets/logo/logo-wine.png" alt="" /><span>Catálogo de Produtos</span><span>04</span></div>
 </section>
 
-<!-- CONTRATO MENSAL -->
+<!-- 5 · CONTRATO MENSAL -->
 <section class="page">
   <div class="prod">
     <div>
@@ -130,33 +147,75 @@
       <p class="ideal"><b>Ideal para:</b> restaurantes, bares, clínicas, salões e negócios que vivem de movimento o ano todo.</p>
       <div class="price"><span>Investimento</span><b>sob consulta · mensal</b></div>
     </div>
-    <div class="photo"><img src="../../assets/img/izadora-mesa.webp" alt="" /></div>
+    <div class="photo"><img src="../../assets/img/izadora-terno.webp" alt="" style="object-position: 50% 15%" /></div>
   </div>
   <div class="footer"><img src="../../assets/logo/logo-wine.png" alt="" /><span>Catálogo de Produtos</span><span>05</span></div>
 </section>
 
-<!-- EVENTOS + ÁLBUM AO VIVO -->
+<!-- 6 · COBERTURA DE EVENTOS -->
 <section class="page">
-  <p class="kicker">Cobertura de eventos</p>
-  <h2>Seu evento nas redes <em>enquanto acontece</em></h2>
-  <p class="lead">Casamentos, aniversários, 15 anos, inaugurações, festas e eventos corporativos registrados em tempo real, com um diferencial exclusivo.</p>
-  <div class="highlight">
-    <span class="tag">Exclusivo</span>
-    <h3>Álbum <em>ao Vivo</em></h3>
-    <p>Os convidados escaneiam um QR code e veem as fotos do evento <b>chegando durante a festa</b>, já editadas. Dá para baixar e compartilhar nos stories na hora. Sem esperar semanas.</p>
-    <div><span class="pill">Sem aplicativo</span><span class="pill">Álbum privado</span><span class="pill">Fotos editadas em minutos</span><span class="pill">Modo telão</span></div>
+  <div class="prod">
+    <div class="event-visual">
+      <div class="phone"><div class="screen">
+        <div class="bar"><span class="live">AO VIVO</span><b>Seu evento</b>fotos chegando agora</div>
+        <div class="grid">
+          <div class="tile t1"><svg viewBox="0 0 24 24"><path d="M8 3h8l-1 7a3 3 0 0 1-6 0zM12 13v7M8 20h8"/></svg></div>
+          <div class="tile t2"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></div>
+          <div class="tile t3"><svg viewBox="0 0 24 24"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg></div>
+          <div class="tile t4"><svg viewBox="0 0 24 24"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z"/></svg></div>
+          <div class="tile t5"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="3"/><circle cx="12" cy="13.5" r="3.5"/><path d="M8 7l2-3h4l2 3"/></svg></div>
+          <div class="tile t6"><svg viewBox="0 0 24 24"><path d="M4 20h16v-7H4zM4 15c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 4 0M12 13V9"/></svg></div>
+        </div>
+        <div class="cta">Baixar · Compartilhar</div>
+      </div></div>
+      <div class="label"><b>Álbum ao Vivo</b>incluso nos níveis Ao Vivo e Premium</div>
+    </div>
+    <div>
+      <p class="kicker">Cobertura</p>
+      <h2 style="font-size:36pt">Eventos</h2>
+      <h3 style="margin-top:0">Seu evento nas redes <em style="color:var(--copper)">enquanto acontece</em></h3>
+      <p class="lead" style="margin-bottom:3mm">Casamentos, aniversários, 15 anos, inaugurações, festas e eventos corporativos registrados em tempo real.</p>
+      <ul class="check incl">
+        <li>Stories postados durante o evento</li>
+        <li>Reels de melhores momentos</li>
+        <li>Fotos editadas entregues depois</li>
+        <li><b>Álbum ao Vivo:</b> convidados veem as fotos durante a festa</li>
+      </ul>
+      <p class="ideal"><b>Ideal para:</b> anfitriões que querem a festa nas redes no mesmo dia e convidados sem esperar semanas.</p>
+      <div class="price"><span>Investimento</span><b>sob consulta</b></div>
+    </div>
   </div>
-  <table>
-    <tr><th style="width:20%">Nível</th><th>O que inclui</th><th style="width:26%">Indicado para</th></tr>
-    <tr><td><b>Essencial</b></td><td>Stories postados durante o evento, reels de melhores momentos e fotos entregues depois</td><td>Aniversários e eventos menores</td></tr>
-    <tr><td><b>Ao Vivo</b> <span class="tag">recomendado</span></td><td>Tudo do Essencial + <b>Álbum ao Vivo</b> com editor dedicado e QR codes para as mesas</td><td>Casamentos, 15 anos e eventos corporativos</td></tr>
-    <tr><td><b>Premium</b></td><td>Tudo do Ao Vivo + <b>modo telão</b> + segundo fotógrafo + entrega final expressa</td><td>Grandes eventos e marcas</td></tr>
-  </table>
-  <div class="price"><span>Investimento</span><b>sob consulta, conforme duração e local</b></div>
   <div class="footer"><img src="../../assets/logo/logo-wine.png" alt="" /><span>Catálogo de Produtos</span><span>06</span></div>
 </section>
 
-<!-- COMPARATIVO -->
+<!-- 7 · ÁLBUM AO VIVO (parte da cobertura) -->
+<section class="page">
+  <p class="kicker">Parte da Cobertura de Eventos</p>
+  <h2>Álbum <em>ao Vivo</em></h2>
+  <p class="lead">Os convidados escaneiam um QR code e veem as fotos do evento chegando durante a festa, já editadas. Dá para baixar e postar na hora, sem esperar semanas.</p>
+  <div class="steps4">
+    <div><b>1</b>Escaneia o QR code na mesa</div>
+    <div><b>2</b>Abre no navegador, sem aplicativo</div>
+    <div><b>3</b>Vê as fotos chegando em minutos</div>
+    <div><b>4</b>Baixa e compartilha nos stories</div>
+  </div>
+
+  <h3 style="margin-top:8mm">Escolha o nível da sua cobertura</h3>
+  <div class="tiers">
+    <div class="card"><h3>Essencial</h3><p>Stories ao vivo</p><p>Reels de melhores momentos</p><p>Fotos entregues depois</p><div class="for">Aniversários e eventos menores</div></div>
+    <div class="card dark"><span class="tag" style="align-self:flex-start">Recomendado</span><h3>Ao Vivo</h3><p style="color:#e6d8d9">Tudo do Essencial</p><p style="color:var(--honey)"><b>+ Álbum ao Vivo</b></p><p style="color:#e6d8d9">QR codes para as mesas</p><div class="for">Casamentos, 15 anos e corporativos</div></div>
+    <div class="card"><h3>Premium</h3><p>Tudo do Ao Vivo</p><p>+ Telão em tempo real</p><p>+ Segundo fotógrafo</p><div class="for">Grandes eventos e marcas</div></div>
+  </div>
+  <div class="grid3">
+    <div class="card copper"><b>Álbum privado</b><p>Acesso só por link e código do evento.</p></div>
+    <div class="card copper"><b>Fotos com curadoria</b><p>Só entram as melhores, já editadas.</p></div>
+    <div class="card copper"><b>Remoção na hora</b><p>Qualquer foto sai a pedido.</p></div>
+  </div>
+  <div class="price"><span>Investimento</span><b>sob consulta, conforme nível, duração e local</b></div>
+  <div class="footer"><img src="../../assets/logo/logo-wine.png" alt="" /><span>Catálogo de Produtos</span><span>07</span></div>
+</section>
+
+<!-- 8 · COMPARATIVO -->
 <section class="page">
   <p class="kicker">Qual é o seu momento?</p>
   <h2>Escolha em <em>10 segundos</em></h2>
@@ -165,7 +224,7 @@
     <tr><td>Quer começar ou testar o formato</td><td><b>Pacote 50 mídias</b></td></tr>
     <tr><td>Quer conteúdo para várias semanas, de uma vez</td><td><b>Pacote 100 mídias</b></td></tr>
     <tr><td>Quer presença nas redes o mês inteiro, todo mês</td><td><b>Contrato Mensal</b></td></tr>
-    <tr><td>Tem um evento e quer que todos vejam as fotos na hora</td><td><b>Cobertura com Álbum ao Vivo</b></td></tr>
+    <tr><td>Tem um evento e quer que todos vejam as fotos na hora</td><td><b>Cobertura de Eventos com Álbum ao Vivo</b></td></tr>
   </table>
 
   <h3>Comparativo</h3>
@@ -184,18 +243,18 @@
   <h3>Perguntas rápidas</h3>
   <div class="grid2">
     <div class="card"><b>Preciso aparecer nos vídeos?</b><p>Não. Dá para mostrar produtos, ambiente, equipe e clientes. Se quiser aparecer, eu te guio.</p></div>
-    <div class="card"><b>Você posta no meu perfil?</b><p>Nos pacotes, eu entrego o material pronto. No mensal e nos eventos, posso postar ao vivo, se você quiser.</p></div>
+    <div class="card"><b>Você posta no meu perfil?</b><p>Nos pacotes, entrego o material pronto. No mensal e nos eventos, posso postar ao vivo, se você quiser.</p></div>
   </div>
-  <div class="footer"><img src="../../assets/logo/logo-wine.png" alt="" /><span>Catálogo de Produtos</span><span>07</span></div>
+  <div class="footer"><img src="../../assets/logo/logo-wine.png" alt="" /><span>Catálogo de Produtos</span><span>08</span></div>
 </section>
 
-<!-- CONTRACAPA -->
+<!-- 9 · CONTRACAPA -->
 <section class="page cover">
   <img class="logo" src="../../assets/logo/logo-offwhite.png" alt="Logo" />
   <div>
     <p class="kicker" style="color: var(--honey)">Vamos conversar?</p>
     <h1>Bora colocar sua marca <em>nos stories</em>?</h1>
-    <p class="sub">Me chama no WhatsApp com o seu negócio, a cidade e o que você procura. O orçamento é sem compromisso.</p>
+    <p class="sub">Me chama no WhatsApp com o seu negócio ou evento, a cidade e o que você procura. O orçamento é sem compromisso.</p>
   </div>
   <div class="meta">
     <div><b>WhatsApp</b>(22) _____-_____</div>
